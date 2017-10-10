@@ -1,0 +1,21 @@
+html {
+    font-family: 'arial', sans-serif;
+}
+
+button {
+  text-align: center;
+  padding: 5px;
+  margin: 100px 0 0 45%;
+  font-size: 20pt;
+  box-sizing: border-box;
+  position: relative;
+  border: 2px solid;
+  background-color: white;
+}
+
+p {
+  font-weight: bold;
+  text-align: center;
+font-size: 30pt;
+padding-top: 30px;
+}

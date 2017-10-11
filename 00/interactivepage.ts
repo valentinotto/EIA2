@@ -1,5 +1,5 @@
 function hellofriend() {
-    var txt;
+    var txt : any;
     var person = prompt("Sag mir deinen Namen:", "Jeremy Pascal");
     if (person == null || person == "") {
         txt = "Oh schade 😱 Spielverderber";

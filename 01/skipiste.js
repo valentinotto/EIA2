@@ -113,3 +113,4 @@ function createTree(x, y, crc2) {
     crc2.fill();
     crc2.closePath();
 }
+//# sourceMappingURL=skipiste.js.map

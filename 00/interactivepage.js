@@ -9,3 +9,4 @@ function hellofriend() {
     }
     document.getElementById("text").innerHTML = txt;
 }
+//# sourceMappingURL=interactivepage.js.map

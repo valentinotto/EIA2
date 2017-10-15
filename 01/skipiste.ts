@@ -106,7 +106,7 @@ function draw() : void {
  createTree(175,525, crc2);
 }
 
-function createTree(x,y,crc2) {
+function createTree(x : number,y :number ,crc2 : any) : void {
   crc2.fillStyle = "green";
   crc2.fillRect(x, y, 12, 20);
   crc2.beginPath();

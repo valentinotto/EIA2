@@ -104,7 +104,7 @@ function draw() : void {
    createSun(Math.floor(Math.random()  * (770 - 360 + 1) + 360), Math.floor(Math.random()  * (100 - 30 + 1) + 30), crc2);
 // Schneeflocken
  for (var i = 1; i < 40; i++) {
-   createSnowflake(Math.floor(Math.random()  * (800 - 0 + 1)), Math.floor(Math.random()  * (600 - 0 + 1)), crc2);
+   createSnowflake(Math.floor(Math.random()  * (800 + 1)), Math.floor(Math.random()  * (600 + 1)), crc2);
  }
 }
 

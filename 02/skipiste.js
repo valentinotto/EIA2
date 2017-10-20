@@ -118,6 +118,7 @@ function createTree(x, y, crc2) {
 function createSnowflake(x, y, crc2) {
     crc2.beginPath();
     crc2.arc(x, y, 4, 0 * Math.PI, 2.0 * Math.PI);
+    crc2.strokeStyle = "#BDBDBD";
     crc2.stroke();
     crc2.fillStyle = "white";
     crc2.fill();

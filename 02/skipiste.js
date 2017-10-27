@@ -1,3 +1,9 @@
+//
+// Aufgabe: 02
+// Name: Valentin Otto
+// Matrikel: 256320
+// Datum: 10.10.17
+// Hiermit versichere ich, dass ich diesen Code selbst geschrieben habe. Er wurde nicht kopiert und auch nicht diktiert.
 window.addEventListener("load", draw);
 function draw() {
     var canvas = document.getElementsByTagName("canvas")[0];

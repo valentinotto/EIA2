@@ -4,7 +4,7 @@
 // Matrikel: 256320
 // Datum: 10.10.17
 // Hiermit versichere ich, dass ich diesen Code selbst geschrieben habe. Er wurde nicht kopiert und auch nicht diktiert.
-
+namespace Aufgabe02{
 window.addEventListener("load", draw);
 
 function draw() : void {
@@ -144,4 +144,5 @@ function createSun (x: number, y:number, crc2:any) : void {
   crc2.fillStyle = "yellow";
   crc2.fill();
   crc2.closePath();
+}
 }

@@ -5,26 +5,23 @@
 // Datum: 09.11.17
 // Hiermit versichere ich, dass ich diesen Code selbst geschrieben habe. Er wurde nicht kopiert und auch nicht diktiert.
 namespace Aufgabe04 {
+
 window.addEventListener("load", init);
+
+interface skierdata {
+  x: number;
+  y: number;
+  headcolor: string;
+  outfitcolor: string;
+}
 
 let crc2: CanvasRenderingContext2D;
 let snowX: number[] = [];
 let snowY: number[] = [];
-
-let skierX: number[] = [];
-let skierY: number[] = [];
 let sunX: number[] = [];
 let sunY: number[] = [];
-
 let imgData: ImageData;
-
-interface skierdata {
-  x: number[];
-  y: number[];
-  skicolor: string;
-  outfitcolor: string;
-}
-
+let skier: skierdata[] = [];
 
 function init(): void {
   let canvas: HTMLCanvasElement = document.getElementsByTagName("canvas")[0];
@@ -138,26 +135,30 @@ function init(): void {
   }
   //Skifahrer
   for (let i: number = 0; i < 1; i++) {
-    skierX[i] = 800;
-    skierY[i] = 280;
+    skier[i] = {
+      x:  800,
+      y:  280,
+      headcolor: "hsl(" + Math.random() * 360 + ", 100%, 50%)",
+      outfitcolor: "hsl(" + Math.random() * 360 + ", 100%, 50%)",
+    };
   }
 
   imgData = crc2.getImageData(0, 0, canvas.width, canvas.height);
   animate();
 }
 
-function createSkier(x: number, y: number): void {
-  crc2.fillStyle = "#000000";
-  crc2.fillRect(x, y, 10, -23);
-  crc2.fillStyle = "#000000";
+function createSkier(s: skierdata): void {
+  crc2.fillStyle = s.outfitcolor;
+  crc2.fillRect(s.x, s.y, 10, -23);
+  crc2.fillStyle = s.headcolor;
   crc2.beginPath();
-  crc2.arc(x+5, y-23, 7, 0,2 * Math.PI);
+  crc2.arc(s.x+5, s.y-23, 7, 0,2 * Math.PI);
   crc2.fill();
   crc2.stroke();
-  crc2.fillStyle = "#000000";
+  crc2.fillStyle = s.headcolor;
   crc2.beginPath();
-  crc2.moveTo(x+20,y-4);
-  crc2.lineTo(x-20,y+4);
+  crc2.moveTo(s.x+20,s.y-4);
+  crc2.lineTo(s.x-20,s.y+4);
   crc2.stroke();
 }
 
@@ -215,24 +216,22 @@ function animate(): void {
   }
 
   //Skifahrer
-  for (let i: number = 0; i < skierX.length; i++) {
-    if (skierX[i] < 0 || skierY[i] > 600) {
-      skierX[i] = 800;
-      skierY[i] = 280;
+  for (let i: number = 0; i < skier.length; i++) {
+    if (skier[i].x < 0 || skier[i].y > 600) {
+      skier[i].x = 800;
+      skier[i].y = 280;
+      skier[i].headcolor = "hsl(" + Math.random() * 360 + ", 100%, 50%)";
+      skier[i].outfitcolor = "hsl(" + Math.random() * 360 + ", 100%, 50%)";
     }
-    skierX[i] -= 2;
-    skierY[i] += 3;
-    createSkier(skierX[i], skierY[i]);
+    skier[i].x -= 2;
+    skier[i].y += 3;
+    createSkier(skier[i]);
+    skier[i].x -= 40;
+    skier[i].y += 60;
+    createSkier(skier[i]);
+    skier[i].x += 40;
+    skier[i].y -= 60;
   }
-  for (let i: number = 0; i < skierX.length; i++) {
-    if (skierX[i] < 0 || skierY[i] > 600) {
-      skierX[i] = 800;
-      skierY[i] = 280;
-    }
-    skierX[i] -= 1.5;
-    skierY[i] += 2.5;
-    createSkier(skierX[i], skierY[i]);
-  }
-  window.setTimeout(animate, 20); //alle 20 ms führt sich die Funktion neu aus
+  window.setTimeout(animate, 20);
 }
 }

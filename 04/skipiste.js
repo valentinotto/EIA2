@@ -10,11 +10,10 @@ var Aufgabe04;
     var crc2;
     var snowX = [];
     var snowY = [];
-    var skierX = [];
-    var skierY = [];
     var sunX = [];
     var sunY = [];
     var imgData;
+    var skier = [];
     function init() {
         var canvas = document.getElementsByTagName("canvas")[0];
         crc2 = canvas.getContext("2d");
@@ -124,24 +123,28 @@ var Aufgabe04;
         }
         //Skifahrer
         for (var i_3 = 0; i_3 < 1; i_3++) {
-            skierX[i_3] = 800;
-            skierY[i_3] = 280;
+            skier[i_3] = {
+                x: 800,
+                y: 280,
+                headcolor: "hsl(" + Math.random() * 360 + ", 100%, 50%)",
+                outfitcolor: "hsl(" + Math.random() * 360 + ", 100%, 50%)"
+            };
         }
         imgData = crc2.getImageData(0, 0, canvas.width, canvas.height);
         animate();
     }
-    function createSkier(x, y) {
-        crc2.fillStyle = "#000000";
-        crc2.fillRect(x, y, 10, -23);
-        crc2.fillStyle = "#000000";
+    function createSkier(s) {
+        crc2.fillStyle = s.outfitcolor;
+        crc2.fillRect(s.x, s.y, 10, -23);
+        crc2.fillStyle = s.headcolor;
         crc2.beginPath();
-        crc2.arc(x + 5, y - 23, 7, 0, 2 * Math.PI);
+        crc2.arc(s.x + 5, s.y - 23, 7, 0, 2 * Math.PI);
         crc2.fill();
         crc2.stroke();
-        crc2.fillStyle = "#000000";
+        crc2.fillStyle = s.headcolor;
         crc2.beginPath();
-        crc2.moveTo(x + 20, y - 4);
-        crc2.lineTo(x - 20, y + 4);
+        crc2.moveTo(s.x + 20, s.y - 4);
+        crc2.lineTo(s.x - 20, s.y + 4);
         crc2.stroke();
     }
     function createTree(x, y, crc2) {
@@ -192,25 +195,23 @@ var Aufgabe04;
             createSnowflake(snowX[i], snowY[i], crc2);
         }
         //Skifahrer
-        for (var i = 0; i < skierX.length; i++) {
-            if (skierX[i] < 0 || skierY[i] > 600) {
-                skierX[i] = 800;
-                skierY[i] = 280;
+        for (var i = 0; i < skier.length; i++) {
+            if (skier[i].x < 0 || skier[i].y > 600) {
+                skier[i].x = 800;
+                skier[i].y = 280;
+                skier[i].headcolor = "hsl(" + Math.random() * 360 + ", 100%, 50%)";
+                skier[i].outfitcolor = "hsl(" + Math.random() * 360 + ", 100%, 50%)";
             }
-            skierX[i] -= 2;
-            skierY[i] += 3;
-            createSkier(skierX[i], skierY[i]);
+            skier[i].x -= 2;
+            skier[i].y += 3;
+            createSkier(skier[i]);
+            skier[i].x -= 40;
+            skier[i].y += 60;
+            createSkier(skier[i]);
+            skier[i].x += 40;
+            skier[i].y -= 60;
         }
-        for (var i = 0; i < skierX.length; i++) {
-            if (skierX[i] < 0 || skierY[i] > 600) {
-                skierX[i] = 800;
-                skierY[i] = 280;
-            }
-            skierX[i] -= 1.5;
-            skierY[i] += 2.5;
-            createSkier(skierX[i], skierY[i]);
-        }
-        window.setTimeout(animate, 20); //alle 20 ms führt sich die Funktion neu aus
+        window.setTimeout(animate, 20);
     }
 })(Aufgabe04 || (Aufgabe04 = {}));
 //# sourceMappingURL=skipiste.js.map

@@ -15,13 +15,22 @@ interface skierdata {
   outfitcolor: string;
 }
 
+interface sundata {
+  x: number;
+  y: number;
+}
+
+interface snowdata {
+  x: number;
+  y: number;
+}
+
 let crc2: CanvasRenderingContext2D;
-let snowX: number[] = [];
-let snowY: number[] = [];
-let sunX: number[] = [];
-let sunY: number[] = [];
-let imgData: ImageData;
+let snow: snowdata[] = [];
+let sun: sundata[] = [];
 let skier: skierdata[] = [];
+let imgData: ImageData;
+
 
 function init(): void {
   let canvas: HTMLCanvasElement = document.getElementsByTagName("canvas")[0];
@@ -125,13 +134,18 @@ function init(): void {
   }
   //Sonne    Anstatt der animierten Wolken
   for (let i: number = 0; i < 1; i++) {
-    sunX[i] = Math.random() * (770 - 360 + 1) + 360;
-    sunY[i] = Math.random() * (100 - 30 + 1) + 30;
+    sun[i] = {
+    x: Math.random() * (770 - 360 + 1) + 360,
+    y: Math.random() * (100 - 30 + 1) + 30,
+};
   }
   // Schnee
   for (let i: number = 0; i < 500; i++) {
-    snowX[i] = Math.random() * 800;
-    snowY[i] = Math.random() * 600;
+
+    snow[i] = {
+      x : Math.random() * 800,
+      y : Math.random() * 600,
+};
   }
   //Skifahrer
   for (let i: number = 0; i < 1; i++) {
@@ -175,9 +189,9 @@ function createTree (x : number,y :number ,crc2 : any) : void {
   crc2.closePath();
 }
 
-function createSnowflake (x: number, y:number, crc2:any) : void {
+function createSnow (s: snowdata) : void {
   crc2.beginPath();
-  crc2.arc(x, y, 4, 0 * Math.PI, 2.0 * Math.PI);
+  crc2.arc(s.x, s.y, 4, 0 * Math.PI, 2.0 * Math.PI);
   crc2.strokeStyle = "#BDBDBD";
   crc2.stroke();
   crc2.fillStyle = "white";
@@ -185,9 +199,9 @@ function createSnowflake (x: number, y:number, crc2:any) : void {
   crc2.closePath();
 }
 
-function createSun (x: number, y:number, crc2:any) : void {
+function createSun (s: sundata) : void {
   crc2.beginPath();
-  crc2.arc(x, y, 30, 0 * Math.PI, 2.0 * Math.PI);
+  crc2.arc(s.x, s.y, 30, 0 * Math.PI, 2.0 * Math.PI);
   crc2.fillStyle = "yellow";
   crc2.fill();
   crc2.closePath();
@@ -197,22 +211,23 @@ function animate(): void {
   crc2.putImageData(imgData, 0, 0);
 
   //Sonne
-  for (let i: number = 0; i < sunX.length; i++) {
-    if (sunX[i] > 800) {
-      sunX[i] = 0;
+  for (let i: number = 0; i < sun.length; i++) {
+    if (sun[i].x > 800) {
+      sun[i].x = 0;
     }
-    sunX[i] += 1;
-    sunY[i] += 0.01;
-    createSun(sunX[i], sunY[i], crc2);
+    sun[i].x += 1;
+    sun[i].x += 0.01;
+    createSun(sun[i]);
+    console.log(sun[i]);
   }
 
   //Schnee
-  for (let i: number = 0; i < snowX.length; i++) {
-    if (snowY[i] > 600) {
-      snowY[i] = 0;
+  for (let i: number = 0; i < snow.length; i++) {
+    if (snow[i].y > 600) {
+      snow[i].y = 0;
     }
-    snowY[i] += Math.random();
-    createSnowflake(snowX[i], snowY[i], crc2);
+    snow[i].y += Math.random();
+    createSnow(snow[i]);
   }
 
   //Skifahrer

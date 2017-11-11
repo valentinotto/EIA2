@@ -8,12 +8,10 @@ var Aufgabe04;
 (function (Aufgabe04) {
     window.addEventListener("load", init);
     var crc2;
-    var snowX = [];
-    var snowY = [];
-    var sunX = [];
-    var sunY = [];
-    var imgData;
+    var snow = [];
+    var sun = [];
     var skier = [];
+    var imgData;
     function init() {
         var canvas = document.getElementsByTagName("canvas")[0];
         crc2 = canvas.getContext("2d");
@@ -113,13 +111,17 @@ var Aufgabe04;
         }
         //Sonne    Anstatt der animierten Wolken
         for (var i_1 = 0; i_1 < 1; i_1++) {
-            sunX[i_1] = Math.random() * (770 - 360 + 1) + 360;
-            sunY[i_1] = Math.random() * (100 - 30 + 1) + 30;
+            sun[i_1] = {
+                x: Math.random() * (770 - 360 + 1) + 360,
+                y: Math.random() * (100 - 30 + 1) + 30
+            };
         }
         // Schnee
         for (var i_2 = 0; i_2 < 500; i_2++) {
-            snowX[i_2] = Math.random() * 800;
-            snowY[i_2] = Math.random() * 600;
+            snow[i_2] = {
+                x: Math.random() * 800,
+                y: Math.random() * 600
+            };
         }
         //Skifahrer
         for (var i_3 = 0; i_3 < 1; i_3++) {
@@ -159,18 +161,18 @@ var Aufgabe04;
         crc2.fill();
         crc2.closePath();
     }
-    function createSnowflake(x, y, crc2) {
+    function createSnow(s) {
         crc2.beginPath();
-        crc2.arc(x, y, 4, 0 * Math.PI, 2.0 * Math.PI);
+        crc2.arc(s.x, s.y, 4, 0 * Math.PI, 2.0 * Math.PI);
         crc2.strokeStyle = "#BDBDBD";
         crc2.stroke();
         crc2.fillStyle = "white";
         crc2.fill();
         crc2.closePath();
     }
-    function createSun(x, y, crc2) {
+    function createSun(s) {
         crc2.beginPath();
-        crc2.arc(x, y, 30, 0 * Math.PI, 2.0 * Math.PI);
+        crc2.arc(s.x, s.y, 30, 0 * Math.PI, 2.0 * Math.PI);
         crc2.fillStyle = "yellow";
         crc2.fill();
         crc2.closePath();
@@ -178,21 +180,22 @@ var Aufgabe04;
     function animate() {
         crc2.putImageData(imgData, 0, 0);
         //Sonne
-        for (var i = 0; i < sunX.length; i++) {
-            if (sunX[i] > 800) {
-                sunX[i] = 0;
+        for (var i = 0; i < sun.length; i++) {
+            if (sun[i].x > 800) {
+                sun[i].x = 0;
             }
-            sunX[i] += 1;
-            sunY[i] += 0.01;
-            createSun(sunX[i], sunY[i], crc2);
+            sun[i].x += 1;
+            sun[i].x += 0.01;
+            createSun(sun[i]);
+            console.log(sun[i]);
         }
         //Schnee
-        for (var i = 0; i < snowX.length; i++) {
-            if (snowY[i] > 600) {
-                snowY[i] = 0;
+        for (var i = 0; i < snow.length; i++) {
+            if (snow[i].y > 600) {
+                snow[i].y = 0;
             }
-            snowY[i] += Math.random();
-            createSnowflake(snowX[i], snowY[i], crc2);
+            snow[i].y += Math.random();
+            createSnow(snow[i]);
         }
         //Skifahrer
         for (var i = 0; i < skier.length; i++) {

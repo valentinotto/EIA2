@@ -1,0 +1,12 @@
+namespace Aufgabe05 {
+
+
+
+
+
+
+
+
+
+  
+}

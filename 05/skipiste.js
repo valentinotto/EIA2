@@ -1,11 +1,11 @@
 //
-// Aufgabe: 04
+// Aufgabe: 05
 // Name: Valentin Otto
 // Matrikel: 256320
-// Datum: 09.11.17
+// Datum: 17.11.17
 // Hiermit versichere ich, dass ich diesen Code selbst geschrieben habe. Er wurde nicht kopiert und auch nicht diktiert.
-var Aufgabe04;
-(function (Aufgabe04) {
+var Aufgabe05;
+(function (Aufgabe05) {
     window.addEventListener("load", init);
     var crc2;
     var snow = [];
@@ -124,11 +124,11 @@ var Aufgabe04;
             };
         }
         //Skifahrer
-        for (var i_3 = 0; i_3 < 7; i_3++) {
+        for (var i_3 = 0; i_3 < 4; i_3++) {
             skier[i_3] = {
                 x: 800,
                 y: 280,
-                dx: Math.random() * 1 + 0.75,
+                dx: Math.random() * 1 + 1.5,
                 dy: Math.random() * 2 + 1,
                 headcolor: "hsl(" + Math.random() * 360 + ", 100%, 50%)",
                 outfitcolor: "hsl(" + Math.random() * 360 + ", 100%, 50%)"
@@ -213,5 +213,5 @@ var Aufgabe04;
         }
         window.setTimeout(animate, 20);
     }
-})(Aufgabe04 || (Aufgabe04 = {}));
+})(Aufgabe05 || (Aufgabe05 = {}));
 //# sourceMappingURL=skipiste.js.map

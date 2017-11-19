@@ -189,7 +189,6 @@ var Aufgabe04;
             sun[i].x += 1;
             sun[i].x += 0.01;
             createSun(sun[i]);
-            console.log(sun[i]);
         }
         //Schnee
         for (var i = 0; i < snow.length; i++) {

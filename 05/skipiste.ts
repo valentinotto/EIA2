@@ -6,28 +6,9 @@
 // Hiermit versichere ich, dass ich diesen Code selbst geschrieben habe. Er wurde nicht kopiert und auch nicht diktiert.
 namespace Aufgabe05 {
 
+export let crc2: CanvasRenderingContext2D;
 window.addEventListener("load", init);
 
-interface Skierdata {
-  x: number;
-  y: number;
-  dx: number;
-  dy: number;
-  headcolor: string;
-  outfitcolor: string;
-}
-
-interface Sundata {
-  x: number;
-  y: number;
-}
-
-interface Snowdata {
-  x: number;
-  y: number;
-}
-
-let crc2: CanvasRenderingContext2D;
 let snow: Snowdata[] = [];
 let sun: Sundata[] = [];
 let skier: Skierdata[] = [];
@@ -136,49 +117,22 @@ function init(): void {
   }
   //Sonne    Anstatt der animierten Wolken
   for (let i: number = 0; i < 1; i++) {
-    sun[i] = {
-    x: Math.random() * (770 - 360 + 1) + 360,
-    y: Math.random() * (100 - 30 + 1) + 30,
-};
+    sun[i] = new Sundata (Math.random() * (770 - 360 + 1) + 360, Math.random() * (100 - 30 + 1) + 30)
   }
   // Schnee
   for (let i: number = 0; i < 500; i++) {
-
-    snow[i] = {
-      x : Math.random() * 800,
-      y : Math.random() * 600,
-};
+    snow[i] = new Snowdata (Math.random() * 800, Math.random() * 600)
   }
+
   //Skifahrer
   for (let i: number = 0; i < 4; i++) {
-    skier[i] = {
-      x:  800,
-      y:  280,
-      dx: Math.random() * 1 + 1.5,
-      dy: Math.random() * 2 + 1,
-      headcolor: "hsl(" + Math.random() * 360 + ", 100%, 50%)",
-      outfitcolor: "hsl(" + Math.random() * 360 + ", 100%, 50%)",
-    };
-  }
+    skier[i] = new Skierdata (800, 280, Math.random() * 1 + 1.5, Math.random() * 2 + 1, "hsl(" + Math.random() * 360 + ", 100%, 50%)", "hsl(" + Math.random() * 360 + ", 100%, 50%)")
+  };
 
   imgData = crc2.getImageData(0, 0, canvas.width, canvas.height);
   animate();
 }
 
-function createSkier(s: Skierdata): void {
-  crc2.fillStyle = s.outfitcolor;
-  crc2.fillRect(s.x, s.y, 10, -23);
-  crc2.fillStyle = s.headcolor;
-  crc2.beginPath();
-  crc2.arc(s.x+5, s.y-23, 7, 0,2 * Math.PI);
-  crc2.fill();
-  crc2.stroke();
-  crc2.fillStyle = s.headcolor;
-  crc2.beginPath();
-  crc2.moveTo(s.x+20,s.y-4);
-  crc2.lineTo(s.x-20,s.y+4);
-  crc2.stroke();
-}
 
 function createTree (x : number,y :number ,crc2 : any) : void {
   crc2.fillStyle = "brown";
@@ -193,58 +147,23 @@ function createTree (x : number,y :number ,crc2 : any) : void {
   crc2.closePath();
 }
 
-function createSnow (s: Snowdata) : void {
-  crc2.beginPath();
-  crc2.arc(s.x, s.y, 4, 0 * Math.PI, 2.0 * Math.PI);
-  crc2.strokeStyle = "#BDBDBD";
-  crc2.stroke();
-  crc2.fillStyle = "white";
-  crc2.fill();
-  crc2.closePath();
-}
-
-function createSun (s: Sundata) : void {
-  crc2.beginPath();
-  crc2.arc(s.x, s.y, 30, 0 * Math.PI, 2.0 * Math.PI);
-  crc2.fillStyle = "yellow";
-  crc2.fill();
-  crc2.closePath();
-}
 
 function animate(): void {
   crc2.putImageData(imgData, 0, 0);
 
   //Sonne
   for (let i: number = 0; i < sun.length; i++) {
-    if (sun[i].x > 800) {
-      sun[i].x = 0;
-    }
-    sun[i].x += 1;
-    sun[i].x += 0.01;
-    createSun(sun[i]);
-    console.log(sun[i]);
+    sun[i].update();
   }
 
   //Schnee
   for (let i: number = 0; i < snow.length; i++) {
-    if (snow[i].y > 600) {
-      snow[i].y = 0;
-    }
-    snow[i].y += Math.random();
-    createSnow(snow[i]);
+    snow[i].update();
   }
 
   //Skifahrer
   for (let i: number = 0; i < skier.length; i++) {
-    if (skier[i].x < 0 || skier[i].y > 600) {
-      skier[i].x = 800;
-      skier[i].y = 280;
-      skier[i].headcolor = "hsl(" + Math.random() * 360 + ", 100%, 50%)";
-      skier[i].outfitcolor = "hsl(" + Math.random() * 360 + ", 100%, 50%)";
-    }
-    skier[i].x -= skier[i].dx,
-    skier[i].y += skier[i].dy,
-    createSkier(skier[i]);
+    skier[i].update();
   }
   window.setTimeout(animate, 20);
 }

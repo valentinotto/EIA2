@@ -222,7 +222,6 @@ function animate(): void {
     sun[i].x += 1;
     sun[i].x += 0.01;
     createSun(sun[i]);
-    console.log(sun[i]);
   }
 
   //Schnee

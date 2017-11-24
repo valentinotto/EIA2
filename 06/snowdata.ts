@@ -1,13 +1,11 @@
 namespace Aufgabe06 {
 
-  export class Snowdata {
+  export class Snowdata extends Movingshapes {
     x: number;
     y: number;
 
-
     constructor (x: number, y: number) {
-      this.x = x;
-      this.y = y;
+      super(x,y);
     }
 
     move() : void {
@@ -25,11 +23,6 @@ namespace Aufgabe06 {
       crc2.fillStyle = "white";
       crc2.fill();
       crc2.closePath();
-    }
-
-    update():void{
-      this.move();
-      this.draw();
     }
   }
 }

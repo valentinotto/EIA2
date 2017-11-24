@@ -1,6 +1,6 @@
 namespace Aufgabe06 {
 
-  export class Skierdata {
+  export class Skierdata extends Movingshapes {
     x: number;
     y: number;
     dx: number;
@@ -9,8 +9,7 @@ namespace Aufgabe06 {
     outfitcolor: string;
 
     constructor (x: number, y: number, dx: number, dy: number, headcolor: string, outfitcolor: string) {
-      this.x = x;
-      this.y = y;
+      super(x,y);
       this.dx = dx;
       this.dy = dy;
       this.headcolor = headcolor;
@@ -41,11 +40,6 @@ namespace Aufgabe06 {
       crc2.moveTo(this.x+20,this.y-4);
       crc2.lineTo(this.x-20,this.y+4);
       crc2.stroke();
-    }
-
-    update():void{
-      this.move();
-      this.draw();
     }
   }
 }

@@ -23,6 +23,7 @@ namespace Aufgabe06 {
         this.headcolor = "hsl(" + Math.random() * 360 + ", 100%, 50%)";
         this.outfitcolor = "hsl(" + Math.random() * 360 + ", 100%, 50%)";
       }
+      
       this.x -= this.dx;
       this.y += this.dy;
     }

@@ -7,9 +7,7 @@
 var Aufgabe06;
 (function (Aufgabe06) {
     window.addEventListener("load", init);
-    var snow = [];
-    var sun = [];
-    var skier = [];
+    var shape = [];
     var imgData;
     function init() {
         var canvas = document.getElementsByTagName("canvas")[0];
@@ -110,15 +108,18 @@ var Aufgabe06;
         }
         //Sonne    Anstatt der animierten Wolken
         for (var i_1 = 0; i_1 < 1; i_1++) {
-            sun[i_1] = new Aufgabe06.Sundata(Math.random() * (770 - 360 + 1) + 360, Math.random() * (100 - 30 + 1) + 30);
+            var sun = new Aufgabe06.Sundata(Math.random() * (770 - 360 + 1) + 360, Math.random() * (100 - 30 + 1) + 30);
+            shape.push(sun);
         }
         // Schnee
         for (var i_2 = 0; i_2 < 500; i_2++) {
-            snow[i_2] = new Aufgabe06.Snowdata(Math.random() * 800, Math.random() * 600);
+            var snow = new Aufgabe06.Snowdata(Math.random() * 800, Math.random() * 600);
+            shape.push(snow);
         }
         //Skifahrer
         for (var i_3 = 0; i_3 < 4; i_3++) {
-            skier[i_3] = new Aufgabe06.Skierdata(800, 280, Math.random() * 1 + 1.5, Math.random() * 2 + 1, "hsl(" + Math.random() * 360 + ", 100%, 50%)", "hsl(" + Math.random() * 360 + ", 100%, 50%)");
+            var skier = new Aufgabe06.Skierdata(800, 280, Math.random() * 1 + 1.5, Math.random() * 2 + 1, "hsl(" + Math.random() * 360 + ", 100%, 50%)", "hsl(" + Math.random() * 360 + ", 100%, 50%)");
+            shape.push(skier);
         }
         ;
         imgData = Aufgabe06.crc2.getImageData(0, 0, canvas.width, canvas.height);
@@ -138,17 +139,10 @@ var Aufgabe06;
     }
     function animate() {
         Aufgabe06.crc2.putImageData(imgData, 0, 0);
-        //Sonne
-        for (var i = 0; i < sun.length; i++) {
-            sun[i].update();
-        }
-        //Schnee
-        for (var i = 0; i < snow.length; i++) {
-            snow[i].update();
-        }
-        //Skifahrer
-        for (var i = 0; i < skier.length; i++) {
-            skier[i].update();
+        for (var i = 0; i < shape.length; i++) {
+            var s = shape[i];
+            console.log(shape[i]);
+            s.update();
         }
         window.setTimeout(animate, 20);
     }

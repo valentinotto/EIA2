@@ -153,7 +153,6 @@ namespace Aufgabe06 {
 
     for (let i: number = 0; i < shape.length; i++) {
       let s: Movingshapes = shape[i];
-      console.log(shape[i]);
       s.update();
     }
     window.setTimeout(animate, 20);

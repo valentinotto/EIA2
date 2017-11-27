@@ -141,7 +141,6 @@ var Aufgabe06;
         Aufgabe06.crc2.putImageData(imgData, 0, 0);
         for (var i = 0; i < shape.length; i++) {
             var s = shape[i];
-            console.log(shape[i]);
             s.update();
         }
         window.setTimeout(animate, 20);

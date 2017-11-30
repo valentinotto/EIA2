@@ -40,7 +40,7 @@ var StudiVZ;
     }
     function queryData(_matrikel) {
         if (typeof students[_matrikel] !== 'undefined') {
-            return "Hier sind deine Daten:\n" + students[_matrikel];
+            return "Hier sind deine Daten:\n\nMatrikelnummer: " + students[_matrikel][0] + "\n      \nName: " + students[_matrikel][1] + "\n      \nVorname: " + students[_matrikel][2] + "\n      \nAlter: " + students[_matrikel][3] + "\n      \nGeschlecht: " + (students[_matrikel][4] === true ? "Männlich" : "Weiblich") + "\n      \nKommentar:" + students[_matrikel][5];
         }
         else {
             return "Deine Daten sind nicht in der Datenbank gespeichert.";

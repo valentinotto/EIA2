@@ -17,7 +17,7 @@ namespace StudiVZ {
     switch (action) {
       case "n":
       case "N":
-      var input: string = prompt("Eingabe (jeweils mit Komma getrennt) von\nMatrikelnummer, Name, Vorname, Alter,\nGeschlecht (m oder w) und Kommentar");
+      var input: string = prompt("Eingabe (jeweils mit Komma getrennt) von\nMatrikelnummer,Name,Vorname,Alter,\nGeschlecht (m oder w) und Kommentar");
       alert(saveData(input));
       break;
       case "a":
@@ -38,11 +38,11 @@ namespace StudiVZ {
     if (student[4] == "m"){student[4] = true;}
     if (student[4] == "w"){student[4] = false;}
     if (isNaN(student[0]) || isNaN(student[3]) || typeof(student[4]) != "boolean" ) {
-      return "Du hast was falsch gemacht! Versuche es noch einmal."
+      return "Du hast was falsch gemacht! Versuche es noch einmal.";
     }
     else {
       students[student[0]] = student;
-      return "Super du hast alles richtig gemacht."
+      return "Super du hast alles richtig gemacht.";
     }
   }
 

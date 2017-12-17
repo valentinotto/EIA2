@@ -6,7 +6,7 @@ namespace Aufgabe09 {
   //
   // Hiermit versichere ich, dass ich diesen Code selbst geschrieben habe. Er wurde nicht kopiert und auch nicht diktiert.
   window.addEventListener("load" , createkeyboard);
-  var selectedchar : string;
+  var selectedchar : string = "";
   var letterspacepos : any;
 
 

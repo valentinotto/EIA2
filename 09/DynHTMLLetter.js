@@ -7,7 +7,7 @@ var Aufgabe09;
     //
     // Hiermit versichere ich, dass ich diesen Code selbst geschrieben habe. Er wurde nicht kopiert und auch nicht diktiert.
     window.addEventListener("load", createkeyboard);
-    var selectedchar;
+    var selectedchar = "";
     var letterspacepos;
     function createkeyboard() {
         document.addEventListener("keydown", function (event) { charpress(event.code, event.altKey); });

@@ -13,7 +13,7 @@ var Aufgabe09;
         document.addEventListener("keydown", function (event) { charpress(event.code, event.altKey); });
         document.addEventListener("click", function (event) { charclick(event, event.altKey); });
         var keyboard = document.createElement("div");
-        keyboard.id = "keyboard";
+        keyboard.className = "keyboard";
         var letterspace = document.createElement("div");
         letterspace.className = "letterspace";
         letterspace.addEventListener("click", drawletter);
@@ -27,7 +27,7 @@ var Aufgabe09;
             var div = document.createElement("div");
             div.id = alphabet[i];
             div.innerText = alphabet[i];
-            var node = document.getElementById("keyboard");
+            var node = document.getElementsByClassName("keyboard");
             node.appendChild(div);
         }
     }

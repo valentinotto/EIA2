@@ -3,7 +3,7 @@ html {
   font-size: 20px;
 }
 
-#keyboard {
+.keyboard {
   width: 100%;
   margin: 20px;
   box-sizing: border-box;
@@ -11,7 +11,7 @@ html {
   overflow: auto;
 }
 
-#keyboard div {
+.keyboard div {
   float: left;
   width: 30px;
   height: 30px;
@@ -21,7 +21,7 @@ html {
   text-align: center;
 }
 
-#keyboard div:hover {
+.keyboard div:hover {
   -webkit-box-shadow: 2px 2px 7px 1px rgba(0,0,0,0.5);
   -moz-box-shadow: 2px 2px 7px 1px rgba(0,0,0,0.5);
   box-shadow: 2px 2px 7px 1px rgba(0,0,0,0.5);

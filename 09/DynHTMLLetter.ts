@@ -5,13 +5,11 @@ namespace Aufgabe09 {
   // Datum: 13.12.17
   //
   // Hiermit versichere ich, dass ich diesen Code selbst geschrieben habe. Er wurde nicht kopiert und auch nicht diktiert.
-
   window.addEventListener("load" , createkeyboard);
-
   var selectedchar : string;
   var letterspacepos : any;
 
-  
+
   function createkeyboard() : void  {
     document.addEventListener("keydown" , (event) => {charpress(event.code, event.altKey)});
     document.addEventListener("click", (event) => {charclick(event, event.altKey)});
@@ -27,9 +25,11 @@ namespace Aufgabe09 {
     document.body.appendChild(letterspace);
 
     let alphabet : string [] = [];
+
     for (let i: number = 65; i <= 90; i++) {
       alphabet.push(String.fromCharCode(i));
     }
+
     for (let i: number = 0; i < alphabet.length; i++) {
       let div: HTMLDivElement = document.createElement("div");
       div.id = alphabet[i];
@@ -41,8 +41,10 @@ namespace Aufgabe09 {
 
 
   function charpress(code : string, alt: boolean) : void {
+
     var char : string = code.substring(3);
     var color : any = document.getElementById(char);
+
     if(alt == false){
       color.style.color = "fuchsia";
       selectedchar = char;
@@ -52,9 +54,11 @@ namespace Aufgabe09 {
 
 
   function charclick(mouse: MouseEvent, alt: boolean) : void {
+
     var target: HTMLElement = <HTMLElement>mouse.target;
     var char : string = target.id;
     var charcolor : any = document.getElementById(char);
+
     if(alt == false) {
       charcolor.style.color = "fuchsia";
       selectedchar = char;

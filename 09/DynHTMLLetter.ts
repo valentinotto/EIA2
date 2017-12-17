@@ -8,7 +8,7 @@ namespace Aufgabe09 {
 
   window.addEventListener("load" , createkeyboard);
 
-  var selectedchar : string [] = [];
+  var selectedchar : string;
   var letterspacepos : any;
 
   function createkeyboard() : void  {
@@ -18,9 +18,10 @@ namespace Aufgabe09 {
     let keyboard: HTMLDivElement = document.createElement("div");
     keyboard.id = "keyboard";
 
-
     let letterspace: HTMLDivElement = document.createElement("div");
     letterspace.className = "letterspace";
+    letterspace.addEventListener("click", drawletter);
+
     document.body.appendChild(keyboard);
     document.body.appendChild(letterspace);
 
@@ -35,47 +36,48 @@ namespace Aufgabe09 {
       var node : any = document.getElementById("keyboard");
       node.appendChild(div);
     }
-    var letterspaceposlocal = node.getBoundingClientRect();
-    console.log(letterspaceposlocal.top, letterspaceposlocal.bottom);
-    letterspacepos = letterspaceposlocal;
   }
 
 
   function charpress(code : string, alt: boolean) : void {
     var char : string = code.substring(3);
     var color : any = document.getElementById(char);
-    if(alt == false){ color.style.color = "fuchsia"; }
+    if(alt == false){
+      color.style.color = "fuchsia";
+      selectedchar = char;
+    }
     else { color.style.color = "black"; }
-
-    selectedchar.push(char);
-    let div : HTMLDivElement = document.createElement("div");
-    var node : any = document.getElementById("letterspace");
-    node.body.appendChild(div);
-    div.id = char + ",";
-    //  div.style.marginLeft = letterspacepos -
-    if(char == selectedchar[char.length - 1] &&  alt == true) {
   }
-}
 
-function charclick(mouse: MouseEvent, alt: boolean) {
-  var target: HTMLElement = <HTMLElement>mouse.target;
-  var char : string = target.id;
-  var color : any = document.getElementById(char);
-  if(alt == false) {
-    color.style.color = "fuchsia";
-    console.log(char);
-    selectedchar.push(char);
-    console.log(selectedchar);
+
+  function charclick(mouse: MouseEvent, alt: boolean) : void {
+    var target: HTMLElement = <HTMLElement>mouse.target;
+    var char : string = target.id;
+    var charcolor : any = document.getElementById(char);
+    if(alt == false) {
+      charcolor.style.color = "fuchsia";
+      selectedchar = char;
+    }
+    else { charcolor.style.color = "black"; }
+  }
+
+
+  function drawletter (mouse : MouseEvent) : void {
 
     let div : HTMLDivElement = document.createElement("div");
-    var node : any = document.getElementsByClassName("letterspace");
-    node.document.appendChild(div);
-    // div.id = char + ",";
-    // div.style.marginLeft = `${letterspacepos.top - mouse.pageX}`;
-    // div.style.marginLeft = `${letterspacepos.bottom - mouse.pageY}`;
-    // if(char == selectedchar[char.length -1] && alt = true) {
-    // }
+
+    div.id = selectedchar;
+    div.style.left = mouse.pageX + "px";
+    div.style.top = mouse.pageY + "px";
+    div.innerText = selectedchar;
+    div.style.color = "hsl(" + Math.random() * 360 + ", 100%, 50%)";
+    div.style.backgroundColor = "black";
+    div.style.width = "30px";
+    div.style.height = "30px";
+    div.style.textAlign = "center";
+    div.style.position = "absolute";
+    div.style.margin = "10px";
+    div.style.border = "1px solid";
+    document.body.appendChild(div);
   }
-  else { color.style.color = "black"; }
-}
 }

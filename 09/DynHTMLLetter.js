@@ -68,7 +68,14 @@ var Aufgabe09;
         div.style.position = "absolute";
         div.style.margin = "10px";
         div.style.border = "1px solid";
+        div.addEventListener("click", function (event) { removeletter(event, event.altKey); });
         document.body.appendChild(div);
+    }
+    function removeletter(mouse, alt) {
+        if (alt == true) {
+            var char = mouse.target;
+            document.body.removeChild(char);
+        }
     }
 })(Aufgabe09 || (Aufgabe09 = {}));
 //# sourceMappingURL=DynHTMLLetter.js.map

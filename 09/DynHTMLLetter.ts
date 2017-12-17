@@ -11,6 +11,7 @@ namespace Aufgabe09 {
   var selectedchar : string;
   var letterspacepos : any;
 
+  
   function createkeyboard() : void  {
     document.addEventListener("keydown" , (event) => {charpress(event.code, event.altKey)});
     document.addEventListener("click", (event) => {charclick(event, event.altKey)});
@@ -78,6 +79,17 @@ namespace Aufgabe09 {
     div.style.position = "absolute";
     div.style.margin = "10px";
     div.style.border = "1px solid";
+    div.addEventListener ("click" ,(event) => {removeletter(event, event.altKey)});
     document.body.appendChild(div);
+  }
+
+
+  function removeletter (mouse: MouseEvent, alt : boolean) : void {
+
+    if (alt == true) {
+
+      let char: HTMLDivElement = <HTMLDivElement> mouse.target;
+      document.body.removeChild(char);
+    }
   }
 }

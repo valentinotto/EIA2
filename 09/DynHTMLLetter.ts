@@ -15,7 +15,7 @@ namespace Aufgabe09 {
     document.addEventListener("click", (event) => {charclick(event, event.altKey)});
 
     let keyboard: HTMLDivElement = document.createElement("div");
-    keyboard.className = "keyboard";
+    keyboard.id = "keyboard";
 
     let letterspace: HTMLDivElement = document.createElement("div");
     letterspace.className = "letterspace";
@@ -34,7 +34,7 @@ namespace Aufgabe09 {
       let div: HTMLDivElement = document.createElement("div");
       div.id = alphabet[i];
       div.innerText = alphabet[i];
-      var node : any = document.getElementsByClassName("keyboard");
+      var node : any = document.getElementById("keyboard");
       node.appendChild(div);
     }
   }

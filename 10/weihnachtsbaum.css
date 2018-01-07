@@ -1,0 +1,45 @@
+html {
+  font-family: 'roboto', arial, sans-serif;
+}
+
+main {
+  width: 90%;
+  padding: 1em 3em 1em 3em;
+}
+
+h1 {
+  font-size: 2em;
+  color: red;
+}
+
+h2 {
+  font-size: 1em;
+}
+
+input , label {
+  padding: 0.4em;
+}
+
+#adresse input{
+  display: block;
+}
+
+#größe {
+  width: 350px;
+}
+
+#größe ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+#größe li {
+  display: inline;
+  font-size: 14px;
+  padding-right: 75px;
+}
+
+#größe input {
+  width: 100%;
+}

@@ -9,9 +9,9 @@ namespace Aufgabe10 {
   window.addEventListener("change",test1);
 
   function test1(event){
-  let value = event.srcElement.value;
-  let key = event.srcElement.dataset.key;
-  console.log(key, value);
+    let name = event.srcElement.dataset.name;
+    let type = event.srcElement.dataset.type;
+    console.log(type, name);
 }
 
 
@@ -36,7 +36,8 @@ namespace Aufgabe10 {
         let option: HTMLElement = document.createElement("option");
         option.innerText = data[i].name;
         option.id = "option" + i;
-        option.setAttribute(data[i].key,data[i].type)
+        option.setAttribute(`data-type`, Aufgabe10.data[i].type);
+        option.setAttribute(`data-name`, Aufgabe10.data[i].name);
         select.appendChild(option);
       }
     }

@@ -9,9 +9,9 @@ var Aufgabe10;
     window.addEventListener("load", createhtml);
     window.addEventListener("change", test1);
     function test1(event) {
-        var value = event.srcElement.value;
-        var key = event.srcElement.dataset.key;
-        console.log(key, value);
+        var name = event.srcElement.dataset.name;
+        var type = event.srcElement.dataset.type;
+        console.log(type, name);
     }
     var name;
     var street;
@@ -31,7 +31,8 @@ var Aufgabe10;
                 var option = document.createElement("option");
                 option.innerText = Aufgabe10.data[i].name;
                 option.id = "option" + i;
-                option.setAttribute(Aufgabe10.data[i].key, Aufgabe10.data[i].type);
+                option.setAttribute("data-type", Aufgabe10.data[i].type);
+                option.setAttribute("data-name", Aufgabe10.data[i].name);
                 select.appendChild(option);
             }
         }

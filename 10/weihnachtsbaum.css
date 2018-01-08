@@ -43,3 +43,7 @@ input , label {
 #größe input {
   width: 100%;
 }
+
+#checkoutstatus {
+  float: right;
+}

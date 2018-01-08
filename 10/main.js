@@ -82,6 +82,7 @@ var Aufgabe10;
                 stepper.type = "number";
                 stepper.value = "1";
                 stepper.id = "stepper" + i;
+                stepper.name = Aufgabe10.data[i].type + "§" + Aufgabe10.data[i].name;
                 stepper.min = "0";
                 stepper.max = "10";
                 stepper.step = "1";
@@ -217,6 +218,8 @@ var Aufgabe10;
     var cartKugeln = [];
     var cartGröße = [];
     function cart(event) {
+        var inputs = [].slice.call(document.querySelectorAll('input'));
+        inputs.forEach(function (input) { console.log(input.id, input.name, input.value); });
         var target = event.target;
         var stepper = [];
         var checkBoxes = [];

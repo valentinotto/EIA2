@@ -88,6 +88,7 @@ namespace Aufgabe10 {
         stepper.type = "number";
         stepper.value = "1";
         stepper.id = "stepper" + i;
+        stepper.name = data[i].type + "§" + data[i].name;
         stepper.min = "0";
         stepper.max = "10";
         stepper.step = "1";
@@ -255,7 +256,8 @@ namespace Aufgabe10 {
   let cartGröße: string[]= [];
 
   function cart(event: Event): void {                                                           //cart
-
+    var inputs = [].slice.call(document.querySelectorAll('input'));
+    inputs.forEach(function(input){ console.log(input.id, input.name, input.value); });
     let target: HTMLInputElement = <HTMLInputElement>event.target;
     let stepper: HTMLInputElement[] = [];
     let checkBoxes: HTMLInputElement[] = [];

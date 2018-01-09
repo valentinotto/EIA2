@@ -210,16 +210,14 @@ var Aufgabe10;
             button.appendChild(status);
         }
     }
-    var cartBezahlmethode = [];
-    var cartStern = [];
-    var cartLametta = [];
-    var cartBaumart = [];
-    var cartBeleuchtung = [];
+    var cartBezahlmethode = ["0"];
+    var cartStern = ["0"];
+    var cartLametta = ["0"];
+    var cartBaumart = ["0"];
+    var cartBeleuchtung = ["0"];
     var cartKugeln = [];
-    var cartGröße = [];
+    var cartGröße = ["0"];
     function cart(event) {
-        var inputs = [].slice.call(document.querySelectorAll('input'));
-        inputs.forEach(function (input) { console.log(input.id, input.name, input.value); });
         var target = event.target;
         var stepper = [];
         var checkBoxes = [];
@@ -230,29 +228,29 @@ var Aufgabe10;
                 checkBoxes[i] = document.getElementById("check1" + i);
             }
             if (target.value == Aufgabe10.data[i].name && target.id == "selectBaumart") {
-                cartBaumart[0] = Aufgabe10.data[i].name;
-                cartBaumart[1] = "" + Aufgabe10.data[i].price;
+                cartBaumart[1] = Aufgabe10.data[i].name;
+                cartBaumart[0] = "" + Aufgabe10.data[i].price;
             }
             if (target.id == "Größe") {
                 var größeint = parseInt(target.value);
-                cartGröße[0] = Aufgabe10.data[(i + größeint - 1)].name;
-                cartGröße[1] = "" + Aufgabe10.data[(i + größeint - 1)].price;
+                cartGröße[1] = Aufgabe10.data[(i + größeint - 1)].name;
+                cartGröße[0] = "" + Aufgabe10.data[(i + größeint - 1)].price;
             }
             if (target.id == "radio1" + i) {
-                cartLametta[0] = Aufgabe10.data[i].name;
-                cartLametta[1] = "" + Aufgabe10.data[i].price;
+                cartLametta[1] = Aufgabe10.data[i].name;
+                cartLametta[0] = "" + Aufgabe10.data[i].price;
             }
             if (target.id == "radio2" + i) {
-                cartStern[0] = Aufgabe10.data[i].name;
-                cartStern[1] = "" + Aufgabe10.data[i].price;
+                cartStern[1] = Aufgabe10.data[i].name;
+                cartStern[0] = "" + Aufgabe10.data[i].price;
             }
             if (target.id == "radio3" + i) {
-                cartBezahlmethode[0] = Aufgabe10.data[i].name;
-                cartBezahlmethode[1] = "" + Aufgabe10.data[i].price;
+                cartBezahlmethode[1] = Aufgabe10.data[i].name;
+                cartBezahlmethode[0] = "" + Aufgabe10.data[i].price;
             }
             if (target.value == Aufgabe10.data[i].name && target.id == "selectLichter") {
-                cartBeleuchtung[0] = Aufgabe10.data[i].name;
-                cartBeleuchtung[1] = "" + Aufgabe10.data[i].price;
+                cartBeleuchtung[1] = Aufgabe10.data[i].name;
+                cartBeleuchtung[0] = "" + Aufgabe10.data[i].price;
             }
             if (target.id == "check" + i || target.id == "stepper" + i) {
                 cartKugeln[i] = [Aufgabe10.data[i].name, "" + (Aufgabe10.data[i].price * parseInt(stepper[i].value))];
@@ -261,20 +259,34 @@ var Aufgabe10;
         var basket = document.getElementById("basket");
         basket.style.width = "25%";
         basket.style.height = "auto";
-        basket.style.backgroundColor = "#0B610B";
+        basket.style.backgroundColor = "#999999";
         basket.innerHTML = "<span class='cart'>Warenkorb</span><hr>";
-        basket.innerHTML += "" + cartBaumart[0] + " " + cartBaumart[1] + "€ <br>";
-        basket.innerHTML += cartGröße[0] + " " + cartGröße[1] + "€ <br>";
-        basket.innerHTML += cartBeleuchtung[0] + " " + cartBeleuchtung[1] + "€ <br>";
-        //basket.innerHTML += cartKugeln[0] + " " + cartKugeln[1] + "€ <br>";
-        basket.innerHTML += cartLametta[0] + " " + cartLametta[1] + "€ <br>";
-        basket.innerHTML += cartStern[0] + " " + cartStern[1] + "€ <br>";
-        basket.innerHTML += cartBezahlmethode[0] + " " + cartBezahlmethode[1] + "€ <br>";
-        totalprice = parseFloat(cartBaumart[1]) + parseFloat(cartGröße[1]) + parseFloat(cartStern[1]) + parseFloat(cartLametta[1]) + parseFloat(cartBezahlmethode[1]);
+        if (cartBaumart[1] != undefined) {
+            basket.innerHTML += "" + cartBaumart[1] + " " + cartBaumart[0] + "€ <br>";
+        }
+        if (cartGröße[1] != undefined) {
+            basket.innerHTML += cartGröße[1] + " " + cartGröße[0] + "€ <br>";
+        }
+        if (cartBeleuchtung[1] != undefined && cartBeleuchtung[1] != "Keine") {
+            basket.innerHTML += cartBeleuchtung[1] + " " + cartBeleuchtung[0] + "€ <br>";
+        }
+        if (cartKugeln[0] != undefined) {
+            basket.innerHTML += cartKugeln[1] + " " + cartKugeln[0] + "€ <br>";
+        }
+        if (cartLametta[1] != undefined && cartLametta[1] != "Nein") {
+            basket.innerHTML += "Lametta " + cartLametta[0] + "€ <br>";
+        }
+        if (cartStern[1] != undefined && cartStern[1] != "Nein") {
+            basket.innerHTML += "Stern " + cartStern[0] + "€ <br>";
+        }
+        if (cartBezahlmethode[1] != undefined) {
+            basket.innerHTML += cartBezahlmethode[1] + " " + cartBezahlmethode[0] + "€ <br>";
+        }
+        totalprice = parseFloat(cartBaumart[0]) + parseFloat(cartGröße[0]) + parseFloat(cartStern[0]) + parseFloat(cartLametta[0]) + parseFloat(cartBezahlmethode[0]);
         for (var i = 0; i < stepper.length; i++) {
             if (checkBoxes[i] != null && checkBoxes[i].checked == true) {
-                //totalprice += parseFloat(cartKugeln[i][1]);
-                basket.innerHTML += "" + cartKugeln[i][0] + " " + cartKugeln[i][1] + "€ <br>";
+                totalprice += parseFloat(cartKugeln[i][0]);
+                basket.innerHTML += "" + cartKugeln[i][1] + " " + cartKugeln[i][0] + "€ <br>";
             }
         }
         basket.innerHTML += "<hr> totalprice: " + Math.round(totalprice * 100) / 100 + "€";

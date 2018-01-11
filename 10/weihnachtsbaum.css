@@ -50,7 +50,7 @@ input , label {
 #basket {
   padding: 2em;
   float: right;
-  position: absolute;
+  position: fixed;
   top: 0;
   right: 0;
   width: 300px;

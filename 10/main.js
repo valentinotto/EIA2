@@ -17,31 +17,33 @@ var Aufgabe10;
     var extra;
     function createhtml() {
         var baumtype = document.getElementById("baumart"); //Baumart
-        var form = document.createElement("form");
-        var select = document.createElement("select");
-        select.id = "selectBaumart";
-        baumtype.appendChild(select);
         for (var i = 0; i < Aufgabe10.data.length; i++) {
             if (Aufgabe10.data[i].type == "Baumart") {
-                var option = document.createElement("option");
-                option.innerText = Aufgabe10.data[i].name;
-                option.value = Aufgabe10.data[i].type + "§" + Aufgabe10.data[i].name + "§" + Aufgabe10.data[i].price;
-                select.appendChild(option);
+                var radio1 = document.createElement("input");
+                radio1.type = "radio";
+                radio1.name = "radiogroup1";
+                radio1.id = Aufgabe10.data[i].type + "§" + Aufgabe10.data[i].name + "§" + Aufgabe10.data[i].price;
+                baumtype.appendChild(radio1);
+                var label1 = document.createElement("label");
+                label1.id = "label" + i;
+                label1.htmlFor = radio1.id;
+                label1.innerText = Aufgabe10.data[i].name;
+                baumtype.appendChild(label1);
             }
         }
         var größe = document.getElementById("größe"); //Größe
         var slider = document.createElement("input");
         slider.type = "range";
-        slider.value = "1";
+        slider.value = "0";
         slider.id = "Größe";
-        slider.min = "1";
+        slider.min = "0";
         var slidermax = 0;
         for (var i = 0; i < Aufgabe10.data.length; i++) {
             if (Aufgabe10.data[i].type == "Größe") {
                 slidermax++;
             }
         }
-        slider.max = "" + slidermax;
+        slider.max = "" + (slidermax - 1);
         slider.step = "1";
         größe.appendChild(slider);
         var sliderlabelul = document.createElement("ul");
@@ -54,31 +56,29 @@ var Aufgabe10;
             }
         }
         var lichter = document.getElementById("lichter"); //Lichter
-        var select2 = document.createElement("select");
-        select2.id = "Beleuchtung";
-        lichter.appendChild(select2);
         for (var i = 0; i < Aufgabe10.data.length; i++) {
             if (Aufgabe10.data[i].type == "Lichter") {
-                var option2 = document.createElement("option");
-                option2.innerText = Aufgabe10.data[i].name;
-                option2.value = Aufgabe10.data[i].type + "§" + Aufgabe10.data[i].name + "§" + Aufgabe10.data[i].price;
-                select2.appendChild(option2);
+                var radio3 = document.createElement("input");
+                radio3.type = "radio";
+                radio3.name = "radiogroup3";
+                radio3.id = Aufgabe10.data[i].type + "§" + Aufgabe10.data[i].name + "§" + Aufgabe10.data[i].price;
+                lichter.appendChild(radio3);
+                var label3 = document.createElement("label");
+                label3.id = "label" + i;
+                label3.htmlFor = radio1.id;
+                label3.innerText = Aufgabe10.data[i].name;
+                lichter.appendChild(label3);
             }
         }
         var kugeln = document.getElementById("kugeln"); //Kugeln
         for (var i = 0; i < Aufgabe10.data.length; i++) {
             if (Aufgabe10.data[i].type == "Kugeln") {
-                var check1 = document.createElement("input");
-                check1.type = "checkbox";
-                check1.value = "check";
-                check1.id = Aufgabe10.data[i].type + "§" + Aufgabe10.data[i].name + "§" + Aufgabe10.data[i].price;
-                kugeln.appendChild(check1);
+                var stepper = document.createElement("input");
                 var label = document.createElement("label");
                 label.id = "label" + i;
-                label.htmlFor = check1.id;
+                label.htmlFor = stepper.id;
                 label.innerText = Aufgabe10.data[i].name;
                 kugeln.appendChild(label);
-                var stepper = document.createElement("input");
                 stepper.type = "number";
                 stepper.value = "0";
                 stepper.id = Aufgabe10.data[i].type + "§" + Aufgabe10.data[i].name + "§" + Aufgabe10.data[i].price;
@@ -94,33 +94,31 @@ var Aufgabe10;
         var lametta = document.getElementById("lametta"); //Lametta
         for (var i = 0; i < Aufgabe10.data.length; i++) {
             if (Aufgabe10.data[i].type == "Lametta") {
-                var radio = document.createElement("input");
-                radio.type = "radio";
-                radio.name = "radiogroup";
-                radio.value = Aufgabe10.data[i].type + "§" + Aufgabe10.data[i].name + "§" + Aufgabe10.data[i].price;
-                radio.id = Aufgabe10.data[i].type + "§" + Aufgabe10.data[i].name + "§" + Aufgabe10.data[i].price;
-                lametta.appendChild(radio);
-                var label2 = document.createElement("label");
-                label2.id = "label" + i;
-                label2.htmlFor = radio.id;
-                label2.innerText = Aufgabe10.data[i].name;
-                lametta.appendChild(label2);
+                var radio4 = document.createElement("input");
+                radio4.type = "radio";
+                radio4.name = "radiogroup3";
+                radio4.id = Aufgabe10.data[i].type + "§" + Aufgabe10.data[i].name + "§" + Aufgabe10.data[i].price;
+                lametta.appendChild(radio4);
+                var label4 = document.createElement("label");
+                label4.id = "label" + i;
+                label4.htmlFor = radio4.id;
+                label4.innerText = Aufgabe10.data[i].name;
+                lametta.appendChild(label4);
             }
         }
         var stern = document.getElementById("stern"); //Stern
         for (var i = 0; i < Aufgabe10.data.length; i++) {
             if (Aufgabe10.data[i].type == "Stern") {
-                var radio2 = document.createElement("input");
-                radio2.type = "radio";
-                radio2.name = "radiogroup2";
-                radio2.value = Aufgabe10.data[i].type + "§" + Aufgabe10.data[i].name + "§" + Aufgabe10.data[i].price;
-                radio2.id = Aufgabe10.data[i].type + "§" + Aufgabe10.data[i].name + "§" + Aufgabe10.data[i].price;
-                stern.appendChild(radio2);
-                var label3 = document.createElement("label");
-                label3.id = "label" + i;
-                label3.htmlFor = radio.id;
-                label3.innerText = Aufgabe10.data[i].name;
-                stern.appendChild(label3);
+                var radio5 = document.createElement("input");
+                radio5.type = "radio";
+                radio5.name = "radiogroup2";
+                radio5.id = Aufgabe10.data[i].type + "§" + Aufgabe10.data[i].name + "§" + Aufgabe10.data[i].price;
+                stern.appendChild(radio5);
+                var label5 = document.createElement("label");
+                label5.id = "label" + i;
+                label5.htmlFor = radio5.id;
+                label5.innerText = Aufgabe10.data[i].name;
+                stern.appendChild(label5);
             }
         }
         var address = document.getElementById("adresse"); //Form
@@ -175,17 +173,16 @@ var Aufgabe10;
         var bezahlmethode = document.getElementById("bezahlmethode"); //Bezahlmethode
         for (var i = 0; i < Aufgabe10.data.length; i++) {
             if (Aufgabe10.data[i].type == "Bezahlmethode") {
-                var radio = document.createElement("input");
-                radio.type = "radio";
-                radio.name = "radiogroup3";
-                radio.value = Aufgabe10.data[i].type + "§" + Aufgabe10.data[i].name + "§" + Aufgabe10.data[i].price;
-                radio.id = Aufgabe10.data[i].type + "§" + Aufgabe10.data[i].name + "§" + Aufgabe10.data[i].price;
-                bezahlmethode.appendChild(radio);
-                var label3 = document.createElement("label");
-                label3.id = "label" + i;
-                label3.htmlFor = radio.id;
-                label3.innerText = Aufgabe10.data[i].name;
-                bezahlmethode.appendChild(label3);
+                var radio6 = document.createElement("input");
+                radio6.type = "radio";
+                radio6.name = "radiogroup6";
+                radio6.id = Aufgabe10.data[i].type + "§" + Aufgabe10.data[i].name + "§" + Aufgabe10.data[i].price;
+                bezahlmethode.appendChild(radio6);
+                var label6 = document.createElement("label");
+                label6.id = "label" + i;
+                label6.htmlFor = radio6.id;
+                label6.innerText = Aufgabe10.data[i].name;
+                bezahlmethode.appendChild(label6);
             }
         }
         var button = document.getElementById("check"); //Button Check
@@ -215,80 +212,94 @@ var Aufgabe10;
     var cartLametta = ["0"];
     var cartBaumart = ["0"];
     var cartBeleuchtung = ["0"];
-    var cartKugeln = [];
+    var cartKugeln = [0]["0"];
     var cartGröße = ["0"];
     function cart(event) {
         var target = event.target;
-        var stepper = [];
-        var checkBoxes = [];
         var totalprice = 0;
-        var inputInfo = target.id.split("§");
-        console.log(inputInfo, target.value);
-        //
-        // for (let i: number = 0; i < data.length; i++) {
-        //   if (data[i].type == "Kugeln") {
-        //     stepper[i] = <HTMLInputElement>document.getElementById("stepper" + i);
-        //     checkBoxes[i] = <HTMLInputElement>document.getElementById("check1" + i);
-        //   }
-        //
-        //   if (target.value == data[i].name && target.id == "selectBaumart") {
-        //     cartBaumart[1] = data[i].name;
-        //     cartBaumart[0] = "" + data[i].price;
-        //   }
-        //
-        //   if (target.id == "Größe") {
-        //     let größeint :number = parseInt(target.value);
-        //     cartGröße[1] = data[(i + größeint -1)].name;
-        //     cartGröße[0] = "" + data[(i + größeint -1)].price;
-        //     console.log(cartGröße[0]);
-        //   }
-        //
-        //   if (target.id == "radio1" + i) {
-        //     cartLametta[1] = data[i].name;
-        //     cartLametta[0] = "" + data[i].price;
-        //   }
-        //
-        //   if (target.id == "radio2" + i) {
-        //     cartStern[1] = data[i].name;
-        //     cartStern[0] = "" + data[i].price;
-        //   }
-        //
-        //   if (target.id == "radio3" + i) {
-        //     cartBezahlmethode[1] = data[i].name;
-        //     cartBezahlmethode[0] = "" + data[i].price;
-        //   }
-        //
-        //   if (target.value == data[i].name && target.id == "selectLichter") {
-        //     cartBeleuchtung[1] = data[i].name;
-        //     cartBeleuchtung[0] = "" + data[i].price;
-        //   }
-        //
-        //   if (target.id == "check" + i || target.id == "stepper" + i) {
-        //     cartKugeln[i] = [data[i].name, "" + (data[i].price * parseInt(stepper[i].value))];
-        //   }
-        // }
-        //
-        // let basket: HTMLDivElement = <HTMLDivElement>document.getElementById("basket");
-        // basket.style.width = "25%";
-        // basket.style.height = "auto";
-        // basket.style.backgroundColor = "#999999";
-        // basket.innerHTML = "<span class='cart'>Warenkorb</span><hr>";
-        // if(cartBaumart[1] != undefined){basket.innerHTML += "" + cartBaumart[1] + " " + cartBaumart[0] + "€ <br>";}
-        // if(cartGröße[1] != undefined){basket.innerHTML += cartGröße[1] + " " + cartGröße[0] + "€ <br>";}
-        // if(cartBeleuchtung[1] != undefined && cartBeleuchtung[1] != "Keine"){basket.innerHTML += cartBeleuchtung[1] + " " + cartBeleuchtung[0] + "€ <br>";}
-        // if(cartKugeln[0] != undefined){basket.innerHTML += cartKugeln[1] + " " + cartKugeln[0] + "€ <br>";}
-        // if(cartLametta[1] != undefined && cartLametta[1] != "Nein"){basket.innerHTML += "Lametta " + cartLametta[0] + "€ <br>";}
-        // if(cartStern[1] != undefined && cartStern[1] != "Nein"){basket.innerHTML += "Stern "  + cartStern[0] + "€ <br>";}
-        // if(cartBezahlmethode[1] != undefined){basket.innerHTML += cartBezahlmethode[1] + " " + cartBezahlmethode[0] + "€ <br>";}
-        //
-        // totalprice = parseFloat(cartBaumart[0]) + parseFloat(cartGröße[0]) + parseFloat(cartStern[0])+ parseFloat(cartLametta[0])+ parseFloat(cartBezahlmethode[0]) + parseFloat(cartBeleuchtung[0]);
+        var inputInfo = target.id.split("§"); //0=type,1=name,2=price
+        //console.log(inputInfo, target.value);
+        if (inputInfo[0] == "Baumart") {
+            cartBaumart[1] = inputInfo[1];
+            cartBaumart[0] = inputInfo[2];
+        }
+        if (inputInfo[0] == "Größe") {
+            var größeInt = parseInt(target.value);
+            var größeName = [];
+            var größePrice = [];
+            for (var i = 0; i < Aufgabe10.data.length; i++) {
+                if (Aufgabe10.data[i].type == "Größe") {
+                    größeName.push(Aufgabe10.data[i].name);
+                    größePrice.push(Aufgabe10.data[i].price);
+                }
+            }
+            cartGröße[1] = größeName[größeInt];
+            cartGröße[0] = "" + größePrice[größeInt];
+        }
+        if (inputInfo[0] == "Lichter") {
+            cartBeleuchtung[1] = inputInfo[1];
+            cartBeleuchtung[0] = inputInfo[2];
+        }
+        if (inputInfo[0] == "Kugeln" && target.value != "check") {
+            var kugelnName = [];
+            var kugelnPrice = [];
+            var kugelnTempName = void 0;
+            for (var i = 0; i < Aufgabe10.data.length; i++) {
+                if (Aufgabe10.data[i].type == "Kugeln") {
+                    kugelnName.push(Aufgabe10.data[i].name);
+                    kugelnPrice.push(Aufgabe10.data[i].price);
+                }
+            }
+            for (var i = 0; i < kugelnName.length; i++) {
+                console.log(i, inputInfo);
+                cartKugeln[i][0] = inputInfo[1];
+                cartKugeln[i][1] = inputInfo[2];
+                cartKugeln[i][2] = target.value;
+            }
+        }
+        if (inputInfo[0] == "Lametta") {
+            cartLametta[1] = inputInfo[1];
+            cartLametta[0] = inputInfo[2];
+        }
+        if (inputInfo[0] == "Stern") {
+            cartStern[1] = inputInfo[1];
+            cartStern[0] = inputInfo[2];
+        }
+        if (inputInfo[0] == "Bezahlmethode") {
+            cartBezahlmethode[1] = inputInfo[1];
+            cartBezahlmethode[0] = inputInfo[2];
+        }
+        //generate cart
+        var basket = document.getElementById("basket");
+        basket.style.backgroundColor = "#e6e6e6";
+        basket.innerHTML = "<span class='cart'>Warenkorb</span><hr>";
+        if (cartBaumart[1] != undefined && cartBaumart[0] != "0") {
+            basket.innerHTML += "" + cartBaumart[1] + " " + cartBaumart[0] + "€ <br>";
+        }
+        if (cartGröße[1] != undefined && cartGröße[0] != "0") {
+            basket.innerHTML += cartGröße[1] + " " + cartGröße[0] + "€ <br>";
+        }
+        if (cartBeleuchtung[1] != undefined && cartBeleuchtung[0] != "0") {
+            basket.innerHTML += cartBeleuchtung[1] + " " + cartBeleuchtung[0] + "€ <br>";
+        }
+        //if(cartKugeln[0] != undefined){basket.innerHTML += cartKugeln[1] + " " + cartKugeln[0] + "€ <br>";}
+        if (cartLametta[1] != undefined && cartLametta[0] != "0") {
+            basket.innerHTML += "Lametta " + cartLametta[0] + "€ <br>";
+        }
+        if (cartStern[1] != undefined && cartStern[0] != "0") {
+            basket.innerHTML += "Stern " + cartStern[0] + "€ <br>";
+        }
+        if (cartBezahlmethode[1] != undefined && cartBezahlmethode[0] != "0") {
+            basket.innerHTML += cartBezahlmethode[1] + " " + cartBezahlmethode[0] + "€ <br>";
+        }
+        totalprice = parseFloat(cartBaumart[0]) + parseFloat(cartGröße[0]) + parseFloat(cartStern[0]) + parseFloat(cartLametta[0]) + parseFloat(cartBezahlmethode[0]) + parseFloat(cartBeleuchtung[0]);
         // for (let i: number = 0; i < stepper.length; i++) {
         //   if (checkBoxes[i] != null && checkBoxes[i].checked == true) {
         //     totalprice += parseFloat(cartKugeln[i][0]);
         //     basket.innerHTML += "" + cartKugeln[i][0] + " " + cartKugeln[i][1] + "€ <br>";
         //   }
         // }
-        // basket.innerHTML += "<hr> totalprice: " + Math.round(totalprice * 100) / 100 + "€";
+        basket.innerHTML += "<hr> Gesamtpreis: " + Math.round(totalprice * 100) / 100 + "€";
     }
 })(Aufgabe10 || (Aufgabe10 = {}));
 //# sourceMappingURL=main.js.map

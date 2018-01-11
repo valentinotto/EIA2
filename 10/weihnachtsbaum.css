@@ -47,3 +47,12 @@ input , label {
 #checkoutstatus {
   float: right;
 }
+#basket {
+  padding: 2em;
+  float: right;
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 300px;
+  height: auto;
+}

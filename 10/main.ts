@@ -295,10 +295,9 @@ if (inputInfo[0] == "Kugeln" && target.value != "check") {
   }
 
   for(let i: number = 0; i < kugelnName.length; i++){                       //hier häng ich wieder, wie kann ich das richtig speichern?
-    if(cartKugeln[i][1] !=="undefined" || cartKugeln[i][1] != inputInfo[1]){
+    if(cartKugeln[i][1] !== 'undefined' || cartKugeln[i][1] != inputInfo[1]){
       cartKugeln[i] = [inputInfo[1],inputInfo[2],target.value];
     }
-  }
 }
 
 if (inputInfo[0] == "Lametta") {

@@ -249,51 +249,51 @@ var Aufgabe10;
                 }
             }
             for (var i = 0; i < kugelnName.length; i++) {
-                if (cartKugeln[i][1] !== "undefined" || cartKugeln[i][1] != inputInfo[1]) {
+                if (cartKugeln[i][1] !== 'undefined' || cartKugeln[i][1] != inputInfo[1]) {
                     cartKugeln[i] = [inputInfo[1], inputInfo[2], target.value];
                 }
             }
+            if (inputInfo[0] == "Lametta") {
+                cartLametta[1] = inputInfo[1];
+                cartLametta[0] = inputInfo[2];
+            }
+            if (inputInfo[0] == "Stern") {
+                cartStern[1] = inputInfo[1];
+                cartStern[0] = inputInfo[2];
+            }
+            if (inputInfo[0] == "Bezahlmethode") {
+                cartBezahlmethode[1] = inputInfo[1];
+                cartBezahlmethode[0] = inputInfo[2];
+            }
+            //generate cart
+            var basket = document.getElementById("basket");
+            basket.style.backgroundColor = "#e6e6e6";
+            basket.innerHTML = "<span class='cart'>Warenkorb</span><hr>";
+            if (cartBaumart[1] != undefined && cartBaumart[0] != "0") {
+                basket.innerHTML += "" + cartBaumart[1] + " " + cartBaumart[0] + "€ <br>";
+            }
+            if (cartGröße[1] != undefined && cartGröße[0] != "0") {
+                basket.innerHTML += cartGröße[1] + " " + cartGröße[0] + "€ <br>";
+            }
+            if (cartBeleuchtung[1] != undefined && cartBeleuchtung[0] != "0") {
+                basket.innerHTML += cartBeleuchtung[1] + " " + cartBeleuchtung[0] + "€ <br>";
+            }
+            if (cartLametta[1] != undefined && cartLametta[0] != "0") {
+                basket.innerHTML += "Lametta " + cartLametta[0] + "€ <br>";
+            }
+            if (cartStern[1] != undefined && cartStern[0] != "0") {
+                basket.innerHTML += "Stern " + cartStern[0] + "€ <br>";
+            }
+            if (cartBezahlmethode[1] != undefined && cartBezahlmethode[0] != "0") {
+                basket.innerHTML += cartBezahlmethode[1] + " " + cartBezahlmethode[0] + "€ <br>";
+            }
+            totalprice = parseFloat(cartBaumart[0]) + parseFloat(cartGröße[0]) + parseFloat(cartStern[0]) + parseFloat(cartLametta[0]) + parseFloat(cartBezahlmethode[0]) + parseFloat(cartBeleuchtung[0]);
+            for (var i = 0; i < cartKugeln.length; i++) {
+                totalprice += cartKugeln[i][1] * parseInt(cartKugeln[i][2]);
+                basket.innerHTML += cartKugeln[i][2] + "X " + cartKugeln[i][0] + " " + cartKugeln[i][1] + "€ <br>";
+            }
+            basket.innerHTML += "<hr> Gesamtpreis: " + Math.round(totalprice * 100) / 100 + "€";
         }
-        if (inputInfo[0] == "Lametta") {
-            cartLametta[1] = inputInfo[1];
-            cartLametta[0] = inputInfo[2];
-        }
-        if (inputInfo[0] == "Stern") {
-            cartStern[1] = inputInfo[1];
-            cartStern[0] = inputInfo[2];
-        }
-        if (inputInfo[0] == "Bezahlmethode") {
-            cartBezahlmethode[1] = inputInfo[1];
-            cartBezahlmethode[0] = inputInfo[2];
-        }
-        //generate cart
-        var basket = document.getElementById("basket");
-        basket.style.backgroundColor = "#e6e6e6";
-        basket.innerHTML = "<span class='cart'>Warenkorb</span><hr>";
-        if (cartBaumart[1] != undefined && cartBaumart[0] != "0") {
-            basket.innerHTML += "" + cartBaumart[1] + " " + cartBaumart[0] + "€ <br>";
-        }
-        if (cartGröße[1] != undefined && cartGröße[0] != "0") {
-            basket.innerHTML += cartGröße[1] + " " + cartGröße[0] + "€ <br>";
-        }
-        if (cartBeleuchtung[1] != undefined && cartBeleuchtung[0] != "0") {
-            basket.innerHTML += cartBeleuchtung[1] + " " + cartBeleuchtung[0] + "€ <br>";
-        }
-        if (cartLametta[1] != undefined && cartLametta[0] != "0") {
-            basket.innerHTML += "Lametta " + cartLametta[0] + "€ <br>";
-        }
-        if (cartStern[1] != undefined && cartStern[0] != "0") {
-            basket.innerHTML += "Stern " + cartStern[0] + "€ <br>";
-        }
-        if (cartBezahlmethode[1] != undefined && cartBezahlmethode[0] != "0") {
-            basket.innerHTML += cartBezahlmethode[1] + " " + cartBezahlmethode[0] + "€ <br>";
-        }
-        totalprice = parseFloat(cartBaumart[0]) + parseFloat(cartGröße[0]) + parseFloat(cartStern[0]) + parseFloat(cartLametta[0]) + parseFloat(cartBezahlmethode[0]) + parseFloat(cartBeleuchtung[0]);
-        for (var i = 0; i < cartKugeln.length; i++) {
-            totalprice += cartKugeln[i][1] * parseInt(cartKugeln[i][2]);
-            basket.innerHTML += cartKugeln[i][2] + "X " + cartKugeln[i][0] + " " + cartKugeln[i][1] + "€ <br>";
-        }
-        basket.innerHTML += "<hr> Gesamtpreis: " + Math.round(totalprice * 100) / 100 + "€";
     }
 })(Aufgabe10 || (Aufgabe10 = {}));
 //# sourceMappingURL=main.js.map

@@ -252,7 +252,7 @@ let cartStern: string[]= ["0"];
 let cartLametta: string[] =["0"];
 let cartBaumart: string[] = ["0"];
 let cartBeleuchtung: string[]= ["0"];
-let cartKugeln: string[][] = [0]["0"];
+let cartKugeln: any [][] = [0]["undefined"];
 let cartGröße: string[]= ["0"];
 
 function cart(event: Event): void {                                                           //cart
@@ -261,86 +261,78 @@ function cart(event: Event): void {                                             
   let inputInfo = target.id.split("§");             //0=type,1=name,2=price
   //console.log(inputInfo, target.value);
   if (inputInfo[0] == "Baumart") {
-    cartBaumart[1] = inputInfo[1];
-    cartBaumart[0] = inputInfo[2];
-  }
+  cartBaumart[1] = inputInfo[1];
+  cartBaumart[0] = inputInfo[2];
+}
 
-  if (inputInfo[0] == "Größe") {
-    let größeInt :number = parseInt(target.value);
-    let größeName : string [] = [];
-    let größePrice : number[] = [];
+if (inputInfo[0] == "Größe") {
+  let größeInt :number = parseInt(target.value);
+  let größeName : string [] = [];
+  let größePrice : number[] = [];
 
-    for(let i: number = 0; i < data.length; i++){
-      if(data[i].type == "Größe"){
-        größeName.push(data[i].name);
-        größePrice.push(data[i].price);
-      }
+  for(let i: number = 0; i < data.length; i++){
+    if(data[i].type == "Größe"){
+      größeName.push(data[i].name);
+      größePrice.push(data[i].price);
     }
-    cartGröße[1] =  größeName[größeInt];
-    cartGröße[0] = `${größePrice[größeInt]}`;
   }
+  cartGröße[1] =  größeName[größeInt];
+  cartGröße[0] = `${größePrice[größeInt]}`;
+}
 
-  if (inputInfo[0] == "Lichter") {
-    cartBeleuchtung[1] = inputInfo[1];
-    cartBeleuchtung[0] = inputInfo[2];
-  }
+if (inputInfo[0] == "Lichter") {
+  cartBeleuchtung[1] = inputInfo[1];
+  cartBeleuchtung[0] = inputInfo[2];
+}
 
-  if (inputInfo[0] == "Kugeln" && target.value != "check") {
-    let kugelnName : string [] = [];
-    let kugelnPrice : number [] = [];
-    let kugelnTempName : string;
-    for(let i: number = 0; i < data.length; i++){
-      if(data[i].type == "Kugeln"){
-        kugelnName.push(data[i].name);
-        kugelnPrice.push(data[i].price);
-      }
-    }
-
-
-    for(let i: number = 0; i < kugelnName.length; i++){         //ich versteh einfach nicht warum es nicht geht, irgendwie kann ich für cartKugeln nichts definieren
-        console.log(i, inputInfo);
-        cartKugeln[i][0] = inputInfo[1];
-        cartKugeln[i][1] = inputInfo[2];
-        cartKugeln[i][2] = target.value;
+if (inputInfo[0] == "Kugeln" && target.value != "check") {
+  let kugelnName : string [] = [];
+  let kugelnTempName : string;
+  for(let i: number = 0; i < data.length; i++){
+    if(data[i].type == "Kugeln"){
+      kugelnName.push(data[i].name);
     }
   }
 
-
-  if (inputInfo[0] == "Lametta") {
-    cartLametta[1] = inputInfo[1]
-    cartLametta[0] = inputInfo[2];
+  for(let i: number = 0; i < kugelnName.length; i++){                       //hier häng ich wieder, wie kann ich das richtig speichern?
+    if(cartKugeln[i][1] !=="undefined" || cartKugeln[i][1] != inputInfo[1]){
+      cartKugeln[i] = [inputInfo[1],inputInfo[2],target.value];
+    }
   }
+}
 
-  if (inputInfo[0] == "Stern") {
-    cartStern[1] = inputInfo[1];
-    cartStern[0] = inputInfo[2];
-  }
+if (inputInfo[0] == "Lametta") {
+  cartLametta[1] = inputInfo[1];
+  cartLametta[0] = inputInfo[2];
+}
 
-  if (inputInfo[0] == "Bezahlmethode") {
-    cartBezahlmethode[1] = inputInfo[1];
-    cartBezahlmethode[0] = inputInfo[2];
-  }
+if (inputInfo[0] == "Stern") {
+  cartStern[1] = inputInfo[1];
+  cartStern[0] = inputInfo[2];
+}
 
-  //generate cart
-  let basket: HTMLDivElement = <HTMLDivElement>document.getElementById("basket");
-  basket.style.backgroundColor = "#e6e6e6";
-  basket.innerHTML = "<span class='cart'>Warenkorb</span><hr>";
-  if(cartBaumart[1] != undefined && cartBaumart[0] != "0"){basket.innerHTML += "" + cartBaumart[1] + " " + cartBaumart[0] + "€ <br>";}
-  if(cartGröße[1] != undefined && cartGröße[0] != "0"){basket.innerHTML += cartGröße[1] + " " + cartGröße[0] + "€ <br>";}
-  if(cartBeleuchtung[1] != undefined && cartBeleuchtung[0] != "0"){basket.innerHTML += cartBeleuchtung[1] + " " + cartBeleuchtung[0] + "€ <br>";}
-  //if(cartKugeln[0] != undefined){basket.innerHTML += cartKugeln[1] + " " + cartKugeln[0] + "€ <br>";}
-  if(cartLametta[1] != undefined && cartLametta[0] != "0"){basket.innerHTML += "Lametta " + cartLametta[0] + "€ <br>";}
-  if(cartStern[1] != undefined && cartStern[0] != "0"){basket.innerHTML += "Stern "  + cartStern[0] + "€ <br>";}
-  if(cartBezahlmethode[1] != undefined && cartBezahlmethode[0] != "0"){basket.innerHTML += cartBezahlmethode[1] + " " + cartBezahlmethode[0] + "€ <br>";}
+if (inputInfo[0] == "Bezahlmethode") {
+  cartBezahlmethode[1] = inputInfo[1];
+  cartBezahlmethode[0] = inputInfo[2];
+}
 
-  totalprice = parseFloat(cartBaumart[0]) + parseFloat(cartGröße[0]) + parseFloat(cartStern[0])+ parseFloat(cartLametta[0])+ parseFloat(cartBezahlmethode[0]) + parseFloat(cartBeleuchtung[0]);
-  // for (let i: number = 0; i < stepper.length; i++) {
-  //   if (checkBoxes[i] != null && checkBoxes[i].checked == true) {
-  //     totalprice += parseFloat(cartKugeln[i][0]);
-  //     basket.innerHTML += "" + cartKugeln[i][0] + " " + cartKugeln[i][1] + "€ <br>";
-  //   }
-  // }
-  basket.innerHTML += "<hr> Gesamtpreis: " + Math.round(totalprice * 100) / 100 + "€";
+//generate cart
+let basket: HTMLDivElement = <HTMLDivElement>document.getElementById("basket");
+basket.style.backgroundColor = "#e6e6e6";
+basket.innerHTML = "<span class='cart'>Warenkorb</span><hr>";
+if(cartBaumart[1] != undefined && cartBaumart[0] != "0"){basket.innerHTML += "" + cartBaumart[1] + " " + cartBaumart[0] + "€ <br>";}
+if(cartGröße[1] != undefined && cartGröße[0] != "0"){basket.innerHTML += cartGröße[1] + " " + cartGröße[0] + "€ <br>";}
+if(cartBeleuchtung[1] != undefined && cartBeleuchtung[0] != "0"){basket.innerHTML += cartBeleuchtung[1] + " " + cartBeleuchtung[0] + "€ <br>";}
+if(cartLametta[1] != undefined && cartLametta[0] != "0"){basket.innerHTML += "Lametta " + cartLametta[0] + "€ <br>";}
+if(cartStern[1] != undefined && cartStern[0] != "0"){basket.innerHTML += "Stern "  + cartStern[0] + "€ <br>";}
+if(cartBezahlmethode[1] != undefined && cartBezahlmethode[0] != "0"){basket.innerHTML += cartBezahlmethode[1] + " " + cartBezahlmethode[0] + "€ <br>";}
+
+totalprice = parseFloat(cartBaumart[0]) + parseFloat(cartGröße[0]) + parseFloat(cartStern[0])+ parseFloat(cartLametta[0])+ parseFloat(cartBezahlmethode[0]) + parseFloat(cartBeleuchtung[0]);
+for (let i: number = 0; i < cartKugeln.length; i++) {
+  totalprice += cartKugeln[i][1] * parseInt(cartKugeln[i][2]);
+  basket.innerHTML += cartKugeln[i][2] + "X " + cartKugeln[i][0] + " " + cartKugeln[i][1] + "€ <br>";
+}
+basket.innerHTML += "<hr> Gesamtpreis: " + Math.round(totalprice * 100) / 100 + "€";
 }
 
 

@@ -212,7 +212,7 @@ var Aufgabe10;
     var cartLametta = ["0"];
     var cartBaumart = ["0"];
     var cartBeleuchtung = ["0"];
-    var cartKugeln = [0]["0"];
+    var cartKugeln = [0]["undefined"];
     var cartGröße = ["0"];
     function cart(event) {
         var target = event.target;
@@ -242,19 +242,16 @@ var Aufgabe10;
         }
         if (inputInfo[0] == "Kugeln" && target.value != "check") {
             var kugelnName = [];
-            var kugelnPrice = [];
             var kugelnTempName = void 0;
             for (var i = 0; i < Aufgabe10.data.length; i++) {
                 if (Aufgabe10.data[i].type == "Kugeln") {
                     kugelnName.push(Aufgabe10.data[i].name);
-                    kugelnPrice.push(Aufgabe10.data[i].price);
                 }
             }
             for (var i = 0; i < kugelnName.length; i++) {
-                console.log(i, inputInfo);
-                cartKugeln[i][0] = inputInfo[1];
-                cartKugeln[i][1] = inputInfo[2];
-                cartKugeln[i][2] = target.value;
+                if (cartKugeln[i][1] !== "undefined" || cartKugeln[i][1] != inputInfo[1]) {
+                    cartKugeln[i] = [inputInfo[1], inputInfo[2], target.value];
+                }
             }
         }
         if (inputInfo[0] == "Lametta") {
@@ -282,7 +279,6 @@ var Aufgabe10;
         if (cartBeleuchtung[1] != undefined && cartBeleuchtung[0] != "0") {
             basket.innerHTML += cartBeleuchtung[1] + " " + cartBeleuchtung[0] + "€ <br>";
         }
-        //if(cartKugeln[0] != undefined){basket.innerHTML += cartKugeln[1] + " " + cartKugeln[0] + "€ <br>";}
         if (cartLametta[1] != undefined && cartLametta[0] != "0") {
             basket.innerHTML += "Lametta " + cartLametta[0] + "€ <br>";
         }
@@ -293,12 +289,10 @@ var Aufgabe10;
             basket.innerHTML += cartBezahlmethode[1] + " " + cartBezahlmethode[0] + "€ <br>";
         }
         totalprice = parseFloat(cartBaumart[0]) + parseFloat(cartGröße[0]) + parseFloat(cartStern[0]) + parseFloat(cartLametta[0]) + parseFloat(cartBezahlmethode[0]) + parseFloat(cartBeleuchtung[0]);
-        // for (let i: number = 0; i < stepper.length; i++) {
-        //   if (checkBoxes[i] != null && checkBoxes[i].checked == true) {
-        //     totalprice += parseFloat(cartKugeln[i][0]);
-        //     basket.innerHTML += "" + cartKugeln[i][0] + " " + cartKugeln[i][1] + "€ <br>";
-        //   }
-        // }
+        for (var i = 0; i < cartKugeln.length; i++) {
+            totalprice += cartKugeln[i][1] * parseInt(cartKugeln[i][2]);
+            basket.innerHTML += cartKugeln[i][2] + "X " + cartKugeln[i][0] + " " + cartKugeln[i][1] + "€ <br>";
+        }
         basket.innerHTML += "<hr> Gesamtpreis: " + Math.round(totalprice * 100) / 100 + "€";
     }
 })(Aufgabe10 || (Aufgabe10 = {}));

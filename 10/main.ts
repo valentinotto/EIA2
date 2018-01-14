@@ -252,7 +252,7 @@ let cartStern: string[]= ["0"];
 let cartLametta: string[] =["0"];
 let cartBaumart: string[] = ["0"];
 let cartBeleuchtung: string[]= ["0"];
-let cartKugeln: any [][] = [0]["undefined"];
+let cartKugeln: any [][];
 let cartGröße: string[]= ["0"];
 
 function cart(event: Event): void {                                                           //cart
@@ -286,18 +286,18 @@ if (inputInfo[0] == "Lichter") {
 }
 
 if (inputInfo[0] == "Kugeln" && target.value != "check") {
-  let kugelnName : string [] = [];
-  let kugelnTempName : string;
-  for(let i: number = 0; i < data.length; i++){
-    if(data[i].type == "Kugeln"){
-      kugelnName.push(data[i].name);
-    }
-  }
+  let valuestopush : any [];
 
-  for(let i: number = 0; i < kugelnName.length; i++){                       //hier häng ich wieder, wie kann ich das richtig speichern?
-    if(cartKugeln[i][1] !== 'undefined' || cartKugeln[i][1] != inputInfo[1]){
-      cartKugeln[i] = [inputInfo[1],inputInfo[2],target.value];
-    }
+  console.log(inputInfo[1]);
+  console.log(inputInfo[2]);
+  console.log(target.value);
+
+  valuestopush[0] = inputInfo[1];
+  valuestopush[1] = inputInfo[2];
+  valuestopush[2] = target.value;
+
+  cartKugeln.push(valuestopush);
+  console.log(cartKugeln);
 }
 
 if (inputInfo[0] == "Lametta") {

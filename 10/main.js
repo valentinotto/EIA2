@@ -212,7 +212,7 @@ var Aufgabe10;
     var cartLametta = ["0"];
     var cartBaumart = ["0"];
     var cartBeleuchtung = ["0"];
-    var cartKugeln;
+    var cartKugeln = [];
     var cartGröße = ["0"];
     function cart(event) {
         var target = event.target;
@@ -240,16 +240,18 @@ var Aufgabe10;
             cartBeleuchtung[1] = inputInfo[1];
             cartBeleuchtung[0] = inputInfo[2];
         }
-        if (inputInfo[0] == "Kugeln" && target.value != "check") {
-            var valuestopush = void 0;
-            console.log(inputInfo[1]);
-            console.log(inputInfo[2]);
-            console.log(target.value);
-            valuestopush[0] = inputInfo[1];
-            valuestopush[1] = inputInfo[2];
-            valuestopush[2] = target.value;
-            cartKugeln.push(valuestopush);
-            console.log(cartKugeln);
+        if (inputInfo[0] == "Kugeln") {
+            var kugelnName = [];
+            for (var i = 0; i < Aufgabe10.data.length; i++) {
+                if (Aufgabe10.data[i].type == "Kugeln") {
+                    kugelnName.push(Aufgabe10.data[i].name);
+                }
+            }
+            for (var i = 0; i < kugelnName.length; i++) {
+                if (kugelnName[i] == inputInfo[1]) {
+                    cartKugeln[i] = [inputInfo[1], inputInfo[2], target.value];
+                }
+            }
         }
         if (inputInfo[0] == "Lametta") {
             cartLametta[1] = inputInfo[1];
@@ -287,8 +289,10 @@ var Aufgabe10;
         }
         totalprice = parseFloat(cartBaumart[0]) + parseFloat(cartGröße[0]) + parseFloat(cartStern[0]) + parseFloat(cartLametta[0]) + parseFloat(cartBezahlmethode[0]) + parseFloat(cartBeleuchtung[0]);
         for (var i = 0; i < cartKugeln.length; i++) {
-            totalprice += cartKugeln[i][1] * parseInt(cartKugeln[i][2]);
-            basket.innerHTML += cartKugeln[i][2] + "X " + cartKugeln[i][0] + " " + cartKugeln[i][1] + "€ <br>";
+            if (cartKugeln[i][2] != "0") {
+                totalprice += cartKugeln[i][1] * parseInt(cartKugeln[i][2]);
+                basket.innerHTML += cartKugeln[i][2] + "X " + cartKugeln[i][0] + " " + cartKugeln[i][1] + "€ <br>";
+            }
         }
         basket.innerHTML += "<hr> Gesamtpreis: " + Math.round(totalprice * 100) / 100 + "€";
     }

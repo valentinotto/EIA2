@@ -252,7 +252,7 @@ let cartStern: string[]= ["0"];
 let cartLametta: string[] =["0"];
 let cartBaumart: string[] = ["0"];
 let cartBeleuchtung: string[]= ["0"];
-let cartKugeln: any [][];
+let cartKugeln: any[][] = [];
 let cartGröße: string[]= ["0"];
 
 function cart(event: Event): void {                                                           //cart
@@ -285,19 +285,19 @@ if (inputInfo[0] == "Lichter") {
   cartBeleuchtung[0] = inputInfo[2];
 }
 
-if (inputInfo[0] == "Kugeln" && target.value != "check") {
-  let valuestopush : any [];
+if (inputInfo[0] == "Kugeln") {
+  let kugelnName : any [] = [];
 
-  console.log(inputInfo[1]);
-  console.log(inputInfo[2]);
-  console.log(target.value);
-
-  valuestopush[0] = inputInfo[1];
-  valuestopush[1] = inputInfo[2];
-  valuestopush[2] = target.value;
-
-  cartKugeln.push(valuestopush);
-  console.log(cartKugeln);
+  for(let i: number = 0; i < data.length; i++) {
+    if(data[i].type == "Kugeln"){
+      kugelnName.push(data[i].name);
+    }
+  }
+  for(let i: number = 0; i < kugelnName.length; i++){
+    if(kugelnName[i] == inputInfo[1]) {
+      cartKugeln[i] = [inputInfo[1],inputInfo[2],target.value];
+    }
+  }
 }
 
 if (inputInfo[0] == "Lametta") {
@@ -328,8 +328,10 @@ if(cartBezahlmethode[1] != undefined && cartBezahlmethode[0] != "0"){basket.inne
 
 totalprice = parseFloat(cartBaumart[0]) + parseFloat(cartGröße[0]) + parseFloat(cartStern[0])+ parseFloat(cartLametta[0])+ parseFloat(cartBezahlmethode[0]) + parseFloat(cartBeleuchtung[0]);
 for (let i: number = 0; i < cartKugeln.length; i++) {
+  if(cartKugeln[i][2] != "0"){
   totalprice += cartKugeln[i][1] * parseInt(cartKugeln[i][2]);
   basket.innerHTML += cartKugeln[i][2] + "X " + cartKugeln[i][0] + " " + cartKugeln[i][1] + "€ <br>";
+}
 }
 basket.innerHTML += "<hr> Gesamtpreis: " + Math.round(totalprice * 100) / 100 + "€";
 }

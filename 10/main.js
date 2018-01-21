@@ -185,13 +185,16 @@ var Aufgabe10;
                 bezahlmethode.appendChild(label6);
             }
         }
-        var button = document.getElementById("check"); //Button Check
+        var button = document.getElementById("check");
+        var submit = document.createElement("input");
+        submit.type = "submit";
+        button.appendChild(submit);
         var checkout = document.createElement("button");
         checkout.name = "Button";
         checkout.type = "button";
         checkout.innerText = "Bestellung überprüfen";
         checkout.addEventListener("mousedown", check);
-        button.appendChild(checkout);
+        submit.appendChild(checkout);
     }
     function check(event) {
         var button = document.getElementById("check");

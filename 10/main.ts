@@ -223,13 +223,16 @@ if (data[i].type == "Bezahlmethode") {
 }
 
 
-let button: HTMLDivElement = <HTMLDivElement>document.getElementById("check");                    //Button Check
+let button: HTMLDivElement = <HTMLDivElement>document.getElementById("check");
+let submit: HTMLInputElement = document.createElement("input");
+submit.type = "submit";
+button.appendChild(submit);
 let checkout: HTMLButtonElement = document.createElement("button");
 checkout.name = "Button";
 checkout.type = "button";
 checkout.innerText = "Bestellung überprüfen";
 checkout.addEventListener("mousedown", check);
-button.appendChild(checkout);
+submit.appendChild(checkout);
 }
 
 function check(event: MouseEvent) : void {                                                          //check event

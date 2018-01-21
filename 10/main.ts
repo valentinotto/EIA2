@@ -25,7 +25,7 @@ namespace Aufgabe10 {
     if (data[i].type == "Baumart") {
       var radio1: HTMLInputElement = document.createElement("input");
       radio1.type = "radio";
-      radio1.name = "radiogroup1";
+      radio1.name = data[i].type;
       radio1.id = data[i].type + "§" + data[i].name + "§" + data[i].price;
       baumtype.appendChild(radio1);
 
@@ -64,7 +64,7 @@ namespace Aufgabe10 {
   if (data[i].type == "Lichter") {
     var radio3: HTMLInputElement = document.createElement("input");
     radio3.type = "radio";
-    radio3.name = "radiogroup3";
+    radio3.name = data[i].type;
     radio3.id = data[i].type + "§" + data[i].name + "§" + data[i].price;
     lichter.appendChild(radio3);
 
@@ -106,7 +106,7 @@ for (let i: number = 0; i < data.length; i++) {
 if (data[i].type == "Lametta") {
   var radio4: HTMLInputElement = document.createElement("input");
   radio4.type = "radio";
-  radio4.name = "radiogroup3";
+  radio4.name = data[i].type;
   radio4.id = data[i].type + "§" + data[i].name + "§" + data[i].price;
   lametta.appendChild(radio4);
 
@@ -123,7 +123,7 @@ for (let i: number = 0; i < data.length; i++) {
 if (data[i].type == "Stern") {
   var radio5: HTMLInputElement = document.createElement("input");
   radio5.type = "radio";
-  radio5.name = "radiogroup2";
+  radio5.name = data[i].type;
   radio5.id = data[i].type + "§" + data[i].name + "§" + data[i].price;
   stern.appendChild(radio5);
 
@@ -138,7 +138,7 @@ if (data[i].type == "Stern") {
 let address: HTMLDivElement = <HTMLDivElement>document.getElementById("adresse");               //Form
 name = document.createElement("input");
 name.type = "text";
-name.name = "DataName";
+name.name = "Name";
 name.placeholder = "Name";
 name.pattern = "[a-zA-Z]{1,}";
 name.required = true;
@@ -148,7 +148,7 @@ address.appendChild(name);
 
 street = document.createElement("input");
 street.type = "text";
-street.name = "DataStreet";
+street.name = "Straße";
 street.placeholder = "Straße";
 street.pattern = "[a-zA-Z]{1,}";
 street.required = true;
@@ -158,7 +158,7 @@ address.appendChild(street);
 
 housenumber = document.createElement("input");
 housenumber.type = "text";
-housenumber.name = "DataHousenumber";
+housenumber.name = "Hausnummer";
 housenumber.placeholder = "Hausnummer";
 housenumber.pattern = "[0-9]{1,}";
 housenumber.required = true;
@@ -168,7 +168,7 @@ address.appendChild(housenumber);
 
 city = document.createElement("input");
 city.type = "text";
-city.name = "DataCity";
+city.name = "Ort";
 city.placeholder = "Ort";
 city.pattern = "[a-zA-Z]{1,}";
 city.required = true;
@@ -178,7 +178,7 @@ address.appendChild(city);
 
 zipcode = document.createElement("input");
 zipcode.type = "text";
-zipcode.name = "DataZipcode";
+zipcode.name = "Postleitzahl";
 zipcode.placeholder = "Postleitzahl";
 zipcode.pattern = "[0-9]{5}";
 zipcode.required = true;
@@ -188,7 +188,7 @@ address.appendChild(zipcode);
 
 email = document.createElement("input");
 email.type = "email";
-email.name = "DataEmail";
+email.name = "E-Mail Adresse";
 email.placeholder = "E-Mail";
 email.required = true;
 address.appendChild(email);
@@ -196,7 +196,7 @@ address.appendChild(email);
 
 
 extra = document.createElement("textarea");
-extra.name = "DataExtras";
+extra.name = "Extrawünsche";
 extra.placeholder = "Extrawünsche";
 extra.cols = 30;
 extra.rows = 3;
@@ -210,7 +210,7 @@ for (let i: number = 0; i < data.length; i++) {
 if (data[i].type == "Bezahlmethode") {
   var radio6: HTMLInputElement = document.createElement("input");
   radio6.type = "radio";
-  radio6.name = "radiogroup6";
+  radio6.name = data[i].type;
   radio6.id = data[i].type + "§" + data[i].name + "§" + data[i].price;
   bezahlmethode.appendChild(radio6);
 

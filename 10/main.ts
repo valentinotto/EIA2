@@ -258,7 +258,8 @@ let cartBeleuchtung: string[]= ["0"];
 let cartKugeln: any[][] = [];
 let cartGröße: string[]= ["0"];
 
-function cart(event: Event): void {                                                           //cart
+function cart(event: Event): void {
+  console.log(event);                                                          //cart
   let target: HTMLInputElement = <HTMLInputElement>event.target;
   let totalprice: number = 0;
   let inputInfo = target.id.split("§");             //0=type,1=name,2=price

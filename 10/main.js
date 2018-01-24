@@ -218,6 +218,7 @@ var Aufgabe10;
     var cartKugeln = [];
     var cartGröße = ["0"];
     function cart(event) {
+        console.log(event); //cart
         var target = event.target;
         var totalprice = 0;
         var inputInfo = target.id.split("§"); //0=type,1=name,2=price

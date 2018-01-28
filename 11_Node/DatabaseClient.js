@@ -1,12 +1,15 @@
 var DatabaseClient;
 (function (DatabaseClient) {
     window.addEventListener("load", init);
+    var array;
     function init(_event) {
         console.log("Init");
         var insertButton = document.getElementById("insert");
         var refreshButton = document.getElementById("refresh");
+        var searchButton = document.getElementById("search");
         insertButton.addEventListener("click", insert);
         refreshButton.addEventListener("click", refresh);
+        searchButton.addEventListener("click", search);
     }
     function insert(_event) {
         var inputs = document.getElementsByTagName("input");
@@ -40,7 +43,22 @@ var DatabaseClient;
             var output = document.getElementsByTagName("textarea")[0];
             output.value = xhr.response;
             var responseAsJson = JSON.parse(xhr.response);
+        }
+    }
+    function search(_event) {
+        var xhr = _event.target;
+        if (xhr.readyState == XMLHttpRequest.DONE) {
+            var output = document.getElementsByTagName("textarea")[0];
+            output.value = xhr.response;
+            var responseAsJson = JSON.parse(xhr.response);
             console.log(responseAsJson);
+        }
+        var matInput = document.getElementById("matrikelsearch");
+        var mat = matInput.value;
+        console.log(mat);
+        console.log(array);
+        for (var i = 0; i < array.length; i++) {
+            console.log("for schleife");
         }
     }
 })(DatabaseClient || (DatabaseClient = {}));

@@ -1,12 +1,16 @@
 namespace DatabaseClient {
     window.addEventListener("load", init);
+    var array: any[];
+
 
     function init(_event: Event): void {
         console.log("Init");
         let insertButton: HTMLButtonElement = <HTMLButtonElement>document.getElementById("insert");
         let refreshButton: HTMLButtonElement = <HTMLButtonElement>document.getElementById("refresh");
+        let searchButton: HTMLButtonElement = <HTMLButtonElement>document.getElementById("search");
         insertButton.addEventListener("click", insert);
         refreshButton.addEventListener("click", refresh);
+        searchButton.addEventListener("click", search);
     }
 
     function insert(_event: Event): void {
@@ -45,7 +49,24 @@ namespace DatabaseClient {
             let output: HTMLTextAreaElement = document.getElementsByTagName("textarea")[0];
             output.value = xhr.response;
             let responseAsJson: JSON = JSON.parse(xhr.response);
-            console.log(responseAsJson);
         }
     }
+
+ function search (_event : ProgressEvent) {
+   let xhr: XMLHttpRequest = (<XMLHttpRequest>_event.target);
+   if (xhr.readyState == XMLHttpRequest.DONE) {
+       let output: HTMLTextAreaElement = document.getElementsByTagName("textarea")[0];
+       output.value = xhr.response;
+       let responseAsJson: JSON = JSON.parse(xhr.response);
+       console.log(responseAsJson);
+     }
+
+   let matInput : HTMLInputElement = <HTMLInputElement>document.getElementById("matrikelsearch");
+   let mat : String = matInput.value;
+   console.log(mat);
+   console.log(array);
+   for(let i :number = 0; i< array.length;i++){
+      console.log("for schleife");
+   }
+ }
 }

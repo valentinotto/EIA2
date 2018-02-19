@@ -3,8 +3,8 @@ html {
 }
 
 canvas {
-  width: 95%;
-  height: 95%;
+  height: 95vh;
+  width: 95vw;
   padding: 0;
   margin: auto;
   display: block;

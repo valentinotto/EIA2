@@ -1,10 +1,9 @@
 namespace DatabaseClient {
     window.addEventListener("load", init);
-    var array: any[];
+    var array: any[][];
 
 
     function init(_event: Event): void {
-        console.log("Init");
         let insertButton: HTMLButtonElement = <HTMLButtonElement>document.getElementById("insert");
         let refreshButton: HTMLButtonElement = <HTMLButtonElement>document.getElementById("refresh");
         let searchButton: HTMLButtonElement = <HTMLButtonElement>document.getElementById("search");
@@ -53,20 +52,24 @@ namespace DatabaseClient {
     }
 
  function search (_event : ProgressEvent) {
+   sendRequest("command=find", handleSearchResponse);
+ }
+
+ function handleSearchResponse(_event : ProgressEvent) {
    let xhr: XMLHttpRequest = (<XMLHttpRequest>_event.target);
    if (xhr.readyState == XMLHttpRequest.DONE) {
-       let output: HTMLTextAreaElement = document.getElementsByTagName("textarea")[0];
-       output.value = xhr.response;
        let responseAsJson: JSON = JSON.parse(xhr.response);
+       array = JSON.parse(xhr.response);
        console.log(responseAsJson);
      }
+     let matInput : HTMLInputElement = <HTMLInputElement>document.getElementById("matrikelsearch");
+     let mat : String = matInput.value;
+     for(let i :number = 0; i< array.length;i++){
+       console.log("Stelle " + i + array[i]);
+       // if(mat = array[i].object.matrikel) {
+       //   console.log("success");
+       // }
 
-   let matInput : HTMLInputElement = <HTMLInputElement>document.getElementById("matrikelsearch");
-   let mat : String = matInput.value;
-   console.log(mat);
-   console.log(array);
-   for(let i :number = 0; i< array.length;i++){
-      console.log("for schleife");
-   }
  }
+}
 }

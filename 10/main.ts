@@ -338,14 +338,4 @@ for (let i: number = 0; i < cartKugeln.length; i++) {
 }
 basket.innerHTML += "<hr> Gesamtpreis: " + Math.round(totalprice * 100) / 100 + "€";
 }
-
-
-
-
-
-
-
-
-
-
 }

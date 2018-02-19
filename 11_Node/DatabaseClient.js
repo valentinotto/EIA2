@@ -3,7 +3,6 @@ var DatabaseClient;
     window.addEventListener("load", init);
     var array;
     function init(_event) {
-        console.log("Init");
         var insertButton = document.getElementById("insert");
         var refreshButton = document.getElementById("refresh");
         var searchButton = document.getElementById("search");
@@ -46,19 +45,22 @@ var DatabaseClient;
         }
     }
     function search(_event) {
+        sendRequest("command=find", handleSearchResponse);
+    }
+    function handleSearchResponse(_event) {
         var xhr = _event.target;
         if (xhr.readyState == XMLHttpRequest.DONE) {
-            var output = document.getElementsByTagName("textarea")[0];
-            output.value = xhr.response;
             var responseAsJson = JSON.parse(xhr.response);
+            array = JSON.parse(xhr.response);
             console.log(responseAsJson);
         }
         var matInput = document.getElementById("matrikelsearch");
         var mat = matInput.value;
-        console.log(mat);
-        console.log(array);
         for (var i = 0; i < array.length; i++) {
-            console.log("for schleife");
+            console.log("Stelle " + i + array[i]);
+            // if(mat = array[i].object.matrikel) {
+            //   console.log("success");
+            // }
         }
     }
 })(DatabaseClient || (DatabaseClient = {}));

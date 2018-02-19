@@ -12,11 +12,14 @@ var Aufgabe14;
     function screen1() {
         var canvas = document.getElementsByTagName("canvas")[0];
         var crc2 = canvas.getContext("2d");
-        var grd = crc2.createLinearGradient(0, 800, 0, 0);
-        grd.addColorStop(0, "#999");
-        grd.addColorStop(1, "white");
-        crc2.fillStyle = grd;
+        crc2.fillStyle = "black";
         crc2.fillRect(0, 0, 400, 800);
+        crc2.stroke();
+        crc2.fillStyle = "white";
+        crc2.font = "20vh font-bit";
+        crc2.fillText("PONG", 50, 300);
+        crc2.font = "6vh font-bit";
+        crc2.fillText("Click to start", 50, 360);
     }
 })(Aufgabe14 || (Aufgabe14 = {}));
 //# sourceMappingURL=main.js.map

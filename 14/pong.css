@@ -1,9 +1,12 @@
-@font-face { font-family: 'font-bit'; src: url('http://www.mattlag.com/bitfonts/bit5x3.ttf') format('truetype'); }
+@font-face { font-family: 'font-bit'; src: url('Pixeled.ttf') format('truetype'); }
 
 html {
   font-family: arial, sans-serif;
 }
 
+body {
+  background-color: black;
+}
 canvas {
   height: 95vh;
   width: 95vw;

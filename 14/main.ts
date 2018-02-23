@@ -11,7 +11,7 @@ namespace Aufgabe14 {
   let bg: ImageData;
   export let p: Paddle;
   let b: Ball;
-  export let score: number = 0;
+  export let score: number;
   export let end: boolean = false;
 
   window.addEventListener("load", screen1);
@@ -41,6 +41,7 @@ namespace Aufgabe14 {
     let canvas: HTMLCanvasElement = document.getElementsByTagName("canvas")[0];
     let crc2: CanvasRenderingContext2D = canvas.getContext("2d");
     canvas.removeEventListener("click", screen2);
+    score = 0;
 
 
     f = new Field(crc2);
@@ -100,6 +101,7 @@ namespace Aufgabe14 {
     crc2.fillText("SCORE: " + score, 135, 400);
     crc2.font = "2.5vh font-bit";
     crc2.fillText("PLAY AGAIN", 120, 475);
+    end = false;
     canvas.addEventListener("click", screen2);
   }
 }

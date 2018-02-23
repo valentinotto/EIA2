@@ -11,7 +11,6 @@ var Aufgabe14;
     var f;
     var bg;
     var b;
-    Aufgabe14.score = 0;
     Aufgabe14.end = false;
     window.addEventListener("load", screen1);
     function screen1() {
@@ -34,6 +33,7 @@ var Aufgabe14;
         var canvas = document.getElementsByTagName("canvas")[0];
         var crc2 = canvas.getContext("2d");
         canvas.removeEventListener("click", screen2);
+        Aufgabe14.score = 0;
         f = new Aufgabe14.Field(crc2);
         bg = crc2.getImageData(0, 0, 400, 800);
         Aufgabe14.p = new Aufgabe14.Paddle(200);
@@ -87,6 +87,7 @@ var Aufgabe14;
         crc2.fillText("SCORE: " + Aufgabe14.score, 135, 400);
         crc2.font = "2.5vh font-bit";
         crc2.fillText("PLAY AGAIN", 120, 475);
+        Aufgabe14.end = false;
         canvas.addEventListener("click", screen2);
     }
 })(Aufgabe14 || (Aufgabe14 = {}));

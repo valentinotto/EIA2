@@ -24,9 +24,9 @@ var Aufgabe14;
         crc2.fillText("PONG", 60, 300);
         crc2.font = "3vh font-bit";
         crc2.fillText("Click to start", 72, 575);
-        crc2.fillRect(130, 125, 75, 15);
-        crc2.fillRect(240, 385, 75, 15);
-        crc2.fillRect(280, 350, 15, 15);
+        crc2.fillRect(128, 125, 75, 15);
+        crc2.fillRect(238, 385, 75, 15);
+        crc2.fillRect(278, 350, 15, 15);
         canvas.addEventListener("click", screen2);
     }
     function screen2() {

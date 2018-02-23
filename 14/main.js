@@ -29,13 +29,11 @@ var Aufgabe14;
         crc2.fillRect(230, 385, 75, 15);
         crc2.fillRect(270, 350, 15, 15);
         canvas.addEventListener("click", screen2);
-        canvas.addEventListener("touchstart", screen2);
     }
     function screen2() {
         var canvas = document.getElementsByTagName("canvas")[0];
         var crc2 = canvas.getContext("2d");
         canvas.removeEventListener("click", screen2);
-        canvas.removeEventListener("touchstart", screen2);
         f = new Aufgabe14.Field(crc2);
         bg = crc2.getImageData(0, 0, 400, 800);
         Aufgabe14.p = new Aufgabe14.Paddle(200);
@@ -43,7 +41,6 @@ var Aufgabe14;
         b = new Aufgabe14.Ball(193, 150);
         b.draw(crc2);
         canvas.addEventListener("click", paddleupdate);
-        canvas.addEventListener("touchstart", paddleupdate);
         window.setTimeout(animate, 20);
     }
     function paddleupdate(event) {
@@ -76,7 +73,6 @@ var Aufgabe14;
         var canvas = document.getElementsByTagName("canvas")[0];
         var crc2 = canvas.getContext("2d");
         canvas.removeEventListener("click", paddleupdate);
-        canvas.removeEventListener("touchstart", paddleupdate);
         crc2.fillStyle = "white";
         crc2.fillRect(40, 240, 320, 320);
         crc2.fillStyle = "black";
@@ -92,7 +88,6 @@ var Aufgabe14;
         crc2.font = "2.5vh font-bit";
         crc2.fillText("PLAY AGAIN", 120, 475);
         canvas.addEventListener("click", screen2);
-        canvas.addEventListener("touchstart", screen2);
     }
 })(Aufgabe14 || (Aufgabe14 = {}));
 //# sourceMappingURL=main.js.map

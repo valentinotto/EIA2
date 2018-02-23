@@ -1,5 +1,13 @@
 var Aufgabe14;
 (function (Aufgabe14) {
+    /*
+    Aufgabe: 14
+    Name: Valentin Otto
+    Matrikel: 256320
+    Datum: 19.01.18
+  
+    Hiermit versichere ich, dass ich diesen Code selbst geschrieben habe. Er wurde nicht kopiert und auch nicht diktiert.
+    */
     var Ball = (function () {
         function Ball(x, y) {
             this.speedx = 4;

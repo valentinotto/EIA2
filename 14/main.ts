@@ -22,14 +22,12 @@ namespace Aufgabe14 {
     let crc2: CanvasRenderingContext2D = canvas.getContext("2d");
     crc2.fillStyle = "black";
     crc2.fillRect(0, 0, 400, 800);
-
     crc2.stroke();
     crc2.fillStyle = "white";
     crc2.font = "10vh font-bit";
     crc2.fillText("PONG", 60, 300);
     crc2.font = "3vh font-bit";
     crc2.fillText("Click to start", 72, 575);
-
     crc2.fillRect(128,125,75,15);
     crc2.fillRect(238,385,75,15);
     crc2.fillRect(278,350,15,15);
@@ -42,8 +40,6 @@ namespace Aufgabe14 {
     let crc2: CanvasRenderingContext2D = canvas.getContext("2d");
     canvas.removeEventListener("click", screen2);
     score = 0;
-
-
     f = new Field(crc2);
     bg = crc2.getImageData(0,0,400,800);
     p = new Paddle(200);

@@ -1,3 +1,11 @@
+/*
+Aufgabe: 14
+Name: Valentin Otto
+Matrikel: 256320
+Datum: 19.01.18
+
+Hiermit versichere ich, dass ich diesen Code selbst geschrieben habe. Er wurde nicht kopiert und auch nicht diktiert.
+*/
 @font-face { font-family: 'font-bit'; src: url('Pixeled.ttf') format('truetype'); }
 
 html {
@@ -7,6 +15,7 @@ html {
 body {
   background-color: black;
 }
+
 canvas {
   height: 85vh;
   width: 85vw;

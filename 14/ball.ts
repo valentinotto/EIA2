@@ -3,8 +3,8 @@ namespace Aufgabe14 {
   export class Ball {
     x: number;
     y: number;
-    speedx: number = 0;
-    speedy: number = 4//2 + (1.5 * Math.random());
+    speedx: number = 4;
+    speedy: number = 3 + (1.5 * Math.random());
 
 
     constructor (x: number, y: number) {
@@ -38,7 +38,7 @@ namespace Aufgabe14 {
         end = true;
       }
 
-      if (this.y > 750 && this.y < 755 && this.x > (p.px - 35) && this.x < (p.px + 35)){
+      if (this.y > 750 && this.y < 756 && this.x > (p.px - 35) && this.x < (p.px + 35)){
         this.speedy = -this.speedy;
       }
     }

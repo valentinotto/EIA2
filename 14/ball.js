@@ -2,8 +2,8 @@ var Aufgabe14;
 (function (Aufgabe14) {
     var Ball = (function () {
         function Ball(x, y) {
-            this.speedx = 0;
-            this.speedy = 4; //2 + (1.5 * Math.random());
+            this.speedx = 4;
+            this.speedy = 3 + (1.5 * Math.random());
             this.x = x;
             this.y = y;
         }
@@ -27,7 +27,7 @@ var Aufgabe14;
             if (this.y > 770 && this.speedy > 0) {
                 Aufgabe14.end = true;
             }
-            if (this.y > 750 && this.y < 755 && this.x > (Aufgabe14.p.px - 35) && this.x < (Aufgabe14.p.px + 35)) {
+            if (this.y > 750 && this.y < 756 && this.x > (Aufgabe14.p.px - 35) && this.x < (Aufgabe14.p.px + 35)) {
                 this.speedy = -this.speedy;
             }
         };
